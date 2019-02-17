@@ -1,5 +1,9 @@
 package es.uam.ads.p2.tienda;
 
+import es.uam.ads.p2.tienda.Libro;
+import es.uam.ads.p2.tienda.Disco;
+import es.uam.ads.p2.tienda.Pelicula;
+
 public class TesterTienda01 {
    public static void main(String[] args) {
       Libro l = new Libro(1, "La historia interminable", "Ende, Michael", "Ed. Alfaguara");
