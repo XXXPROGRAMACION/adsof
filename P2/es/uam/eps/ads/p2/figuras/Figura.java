@@ -1,4 +1,4 @@
-package es.uam.ads.p2.figuras;
+package es.uam.eps.ads.p2.figuras;
 
 /**
  * <p>Esta clase permite generalizar la estructura y funcionalidades comunes

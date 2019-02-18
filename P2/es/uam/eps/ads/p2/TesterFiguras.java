@@ -1,11 +1,11 @@
-package es.uam.ads.p2;
+package es.uam.eps.ads.p2;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import es.uam.ads.p2.figuras.Figura;
-import es.uam.ads.p2.figuras.Circulo;
-import es.uam.ads.p2.figuras.Rectangulo;
+import es.uam.eps.ads.p2.figuras.Figura;
+import es.uam.eps.ads.p2.figuras.Circulo;
+import es.uam.eps.ads.p2.figuras.Rectangulo;
 
 public class TesterFiguras {
 

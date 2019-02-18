@@ -1,4 +1,4 @@
-package es.uam.ads.p2.tienda;
+package es.uam.eps.ads.p2.tienda;
 
 public abstract class Articulo {
     protected int id;

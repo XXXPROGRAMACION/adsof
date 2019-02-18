@@ -1,8 +1,4 @@
-package es.uam.ads.p2.tienda;
-
-import es.uam.ads.p2.tienda.Libro;
-import es.uam.ads.p2.tienda.Disco;
-import es.uam.ads.p2.tienda.Pelicula;
+package es.uam.eps.ads.p2.tienda;
 
 public class TesterTienda01 {
    public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package es.uam.ads.p2.tienda;
-
-import es.uam.ads.p2.tienda.Articulo;
+package es.uam.eps.ads.p2.tienda;
 
 public class Disco extends Articulo {
     private String interprete;
