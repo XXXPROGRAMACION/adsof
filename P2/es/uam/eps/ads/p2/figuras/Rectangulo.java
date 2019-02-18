@@ -11,13 +11,13 @@ public class Rectangulo extends Figura {
     double altura;
 
     /**
-     * Permite instanciar un rectángulo con una base y una altura dada
-     * @param baseTemp Longitud de la base del rectángulo a instanciar
-     * @param alturaTemp Longitud de la base del rectángulo a instanciar
+     * Permite instanciar un rectángulo con una base y una altura dada.
+     * @param base Longitud de la base del rectángulo a instanciar
+     * @param altura Longitud de la base del rectángulo a instanciar
      */
-    public Rectangulo(double baseTemp, double alturaTemp) {
-        base = baseTemp;
-        altura = alturaTemp;
+    public Rectangulo(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
     }
 
     /**

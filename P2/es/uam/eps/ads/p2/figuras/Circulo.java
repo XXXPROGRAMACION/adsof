@@ -10,12 +10,11 @@ public class Circulo extends Figura {
     double radio;
 
     /**
-     * Permite instanciar un círculo con un radio 
-     * dado.
-     * @param radioTemp Radio del círculo a instanciar
+     * Permite instanciar un círculo con un radio dado.
+     * @param radio Radio del círculo a instanciar
      */
-    public Circulo(double radioTemp) {
-        radio = radioTemp;
+    public Circulo(double radio) {
+        this.radio = radio;
     }
 
     /**
@@ -25,7 +24,7 @@ public class Circulo extends Figura {
      */
     public String toString() {
         return "Circulo [area=" + getArea() 
-                                + ", perimetro=" + getPerimetro() + "]";
+                + ", perimetro=" + getPerimetro() + "]";
     }
 
     /**
