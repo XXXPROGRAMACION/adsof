@@ -9,6 +9,13 @@ package es.uam.eps.ads.p2.apartado5;
 public class Cuna extends Articulo {
     private boolean pliegeCorrecto;
 
+    /**
+     * Permite inicializar una cuna dado su código de barras.
+     * @param codigoDeBarras Código de barras de la cuna
+     */
+    public Cuna(String codigoDeBarras) {
+        super(codigoDeBarras);
+    }
 
     /**
      * Permite recoger la información de la clase en una cadena de carácteres.
@@ -23,7 +30,7 @@ public class Cuna extends Articulo {
      * @return "true" si la cuna es apta para la venta, "false" en el caso
      * contrario.
      */
-    @override
+    @Override
     public boolean esApto() {
         return pliegeCorrecto;
     }

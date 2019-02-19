@@ -6,14 +6,14 @@ package es.uam.eps.ads.p2.apartado5;
  * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
-public abstract class ArticuloReparable {
-    String marca;
-    String modelo;
-    String color;
-    boolean tieneTodasLasPiezas;
-    boolean anclajesCorrectos;
-    boolean acholchadoCorrecto;
-    String registroTareas;
+public abstract class ArticuloReparable extends Articulo{
+    protected String marca;
+    protected String modelo;
+    protected String color;
+    protected boolean tieneTodasLasPiezas;
+    protected boolean anclajesCorrectos;
+    protected boolean acholchadoCorrecto;
+    protected String registroTareas;
 
     /**
      * Permite instanciar un artículo reparable dadas sus características.
@@ -140,7 +140,7 @@ public abstract class ArticuloReparable {
      * @return "true" si el artículo es apto para la venta, "false" en caso 
      * contrario
      */
-    @override
+    @Override
     public boolean esApto() {
         return tieneTodasLasPiezas && anclajesCorrectos;
     }

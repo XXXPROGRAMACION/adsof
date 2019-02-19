@@ -22,7 +22,7 @@ public class Carrito extends ArticuloReparable {
      * @param bolsaDeViaje Indica si el carrito tiene bolsa de viaje
      * @param cuco Indica si el carrito tiene cuco
      */
-    public ArticuloReparable(String codigoDeBarras, String marca, String modelo,
+    public Carrito(String codigoDeBarras, String marca, String modelo,
                             String color, boolean capazo, 
                             boolean bolsaDeViaje, boolean cuco) {
         super(codigoDeBarras, marca, modelo, color);
@@ -86,7 +86,7 @@ public class Carrito extends ArticuloReparable {
      * Permite saber si el carrito es apto para la venta.
      * @return "true" si el carrito es apto para la venta, "false" en otro caso
      */
-    @override
+    @Override
     public boolean esApto() {
         return super.esApto() && engancheCorrecto;
     }

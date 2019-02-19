@@ -8,8 +8,8 @@ package es.uam.eps.ads.p2.apartado5;
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
 public abstract class Articulo {
-    private String codigoDeBarras;
-    private boolean esteticaCorrecta;
+    protected String codigoDeBarras;
+    protected boolean esteticaCorrecta;
 
     /**
      * Crea un artículo dado su código de barras.
