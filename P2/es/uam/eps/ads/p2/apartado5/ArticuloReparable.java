@@ -1,5 +1,8 @@
 package es.uam.eps.ads.p2.apartado5;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * <p>Esta clase permite trabajar con cunas.</p>
  * 
@@ -13,7 +16,8 @@ public abstract class ArticuloReparable extends Articulo{
     protected boolean tieneTodasLasPiezas;
     protected boolean anclajesCorrectos;
     protected boolean acholchadoCorrecto;
-    protected String registroTareas;
+    protected boolean enReparacion;
+    protected List<String> registroTareas = new ArrayList<>();
 
     /**
      * Permite instanciar un artículo reparable dadas sus características.
@@ -119,20 +123,38 @@ public abstract class ArticuloReparable extends Articulo{
     }
 
     /**
-     * Permite modificar la información del registro de tareas de un artículo
+     * Permite añadir información del registro de tareas de un artículo
      * reparable.
      * @param registroTareas Registro de las tareas del artículo
      */
-    public void setRegistroTareas(String registroTareas) {
-        this.registroTareas = registroTareas;
+    public void anadirRegistroTareas(String registroTareas) {
+        this.registroTareas.add(registroTareas);
     }
 
     /**
      * Permite obtener el registro de tareas de un artículo reparable.
      * @return Registro de tareas del artículo
      */
-    public String getRegistroTareas() {
+    public List<String> getRegistroTareas() {
         return registroTareas;
+    }
+
+    /**
+     * Permite cambiar la información de si un artículo reparable se halla en
+     * reparación.
+     * @param enReparacion Marca si el artículo se halla o no en reparación
+     */
+    public void setEnReparacion(boolean enReparacion) {
+        this.enReparacion = enReparacion; 
+    }
+
+    /**
+     * Permite saber si un artículo reparable se halla en reparación.
+     * @return "true" si el artículo se halla en reparación, "false" en caso 
+     * contrario
+     */
+    public boolean getEnReparacion() {
+        return enReparacion;
     }
 
     /**
