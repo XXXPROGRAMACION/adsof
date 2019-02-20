@@ -26,6 +26,24 @@ public class Cuna extends Articulo {
     }
 
     /**
+     * Permite modificar el valor de corrección del pliegue de una cuna.
+     * @param pliegueCorrecto Valor de la correción del pliegue de la cuna
+     */
+    public void setPliegueCorrecto(boolean pliegeCorrecto) {
+        this.pliegeCorrecto = pliegeCorrecto;
+    }
+
+
+    /**
+     * Permite saber si el pliegue de una cuna es correcto.
+     * @return "true" si el pliegue de la cuna es correcto, "false" en caso
+     * contrario
+     */
+    public boolean getPliegueCorrecto() {
+        return pliegeCorrecto;
+    }
+
+    /**
      * Permite saber si la cuna es apta para la venta.
      * @return "true" si la cuna es apta para la venta, "false" en el caso
      * contrario.
