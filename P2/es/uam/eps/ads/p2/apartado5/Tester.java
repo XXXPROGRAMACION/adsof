@@ -27,13 +27,51 @@ public class Tester {
         //Proceso de verificación
         Cuna cuna_aux = (Cuna) tienda.encontrarArticulo("Cuna1");
         cuna_aux.setPliegueCorrecto(true);
+        cuna_aux.setEsteticaCorrecta(true);
 
         Carrito carrito_aux = (Carrito) tienda.encontrarArticulo("Carrito1");
         carrito_aux.setEngancheCorrecto(true);
+        carrito_aux.setTieneTodasLasPiezas(true);
+        carrito_aux.setAnclajesCorrectos(true);
+        carrito_aux.setAcolchadoCorrecto(true);
+        carrito_aux.setEnReparacion(false);
         carrito_aux = (Carrito) tienda.encontrarArticulo("Carrito2");
         carrito_aux.setEngancheCorrecto(false);
+        carrito_aux.setTieneTodasLasPiezas(false);
+        carrito_aux.setAnclajesCorrectos(false);
+        carrito_aux.setAcolchadoCorrecto(false);
+        carrito_aux.setEnReparacion(false);
         
-        Silla silla_aux = (Silla) tienda.encontrarArticulo("Silla1"); 
+        Silla silla_aux = (Silla) tienda.encontrarArticulo("Silla1");
+        silla_aux.setTieneTodasLasPiezas(false);
+        silla_aux.setAnclajesCorrectos(false);
+        silla_aux.setAcolchadoCorrecto(false);
+        silla_aux.setEnReparacion(false);
+        silla_aux = (Silla) tienda.encontrarArticulo("Silla2");
+        silla_aux.setTieneTodasLasPiezas(false);
+        silla_aux.setAnclajesCorrectos(true);
+        silla_aux.setAcolchadoCorrecto(true);
+        silla_aux.setEnReparacion(false);
+        silla_aux = (Silla) tienda.encontrarArticulo("Silla3");
+        silla_aux.setTieneTodasLasPiezas(true);
+        silla_aux.setAnclajesCorrectos(true);
+        silla_aux.setAcolchadoCorrecto(true);
+        silla_aux.setEnReparacion(false);
+
+        //Envío al fabricante de los artículos
+        tienda.enviarAlFabricante("Carrito2");
+        tienda.enviarAlFabricante("Silla1");
+        tienda.enviarAlFabricante("Silla2");
+        tienda.enviarAlFabricante("Silla3");
+
+        //El fabricante repara los artículos y los envía de vuelta
+        tienda.recibirDelFabricante("Carrito2");
+        tienda.recibirDelFabricante("Silla1");
+        tienda.recibirDelFabricante("Silla2");
+        tienda.recibirDelFabricante("Silla3");
+
+        //Impresión de todos los artículos del almacén
+        tienda.imprimirArticulos();
     }
            
 }

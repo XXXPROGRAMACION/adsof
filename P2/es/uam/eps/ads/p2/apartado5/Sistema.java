@@ -64,4 +64,48 @@ public class Sistema {
         }
         return false;
     }
+
+    /**
+     * Permite imprimir por pantalla los datos de todos los artículo en el 
+     * sistema.
+     */
+    public void imprimirArticulos() {
+        for (Articulo articulo: articulos) {
+            System.out.println(articulo);
+        }
+    }
+
+    /**
+     * Permite simular el envío de un artículo reparable al fabricante del 
+     * artículo.
+     * @param codigoDeBarras Código de barras del artículo a enviar al 
+     * fabricante
+     */
+    public void enviarAlFabricante(String codigoDeBarras) {
+        ArticuloReparable articulo = (ArticuloReparable) 
+                                      encontrarArticulo(codigoDeBarras);
+        articulo.setEnReparacion(true);
+    }
+
+    /**
+     * Permite simular la recepción de un artículo después de haberlo enviado
+     * a reparar al fabricante. Se supone que este fabricante repara
+     * correctamente todos los aspectos del artículo reparable.
+     * @param codigoDeBarras Código de barras del artículo cuya recepción se ha
+     * de simular
+     */
+    public void recibirDelFabricante(String codigoDeBarras) {
+        ArticuloReparable articulo = (ArticuloReparable) 
+                                      encontrarArticulo(codigoDeBarras);
+    
+        articulo.setEnReparacion(false);
+        articulo.setAcolchadoCorrecto(true);
+        articulo.setAnclajesCorrectos(true);
+        articulo.setTieneTodasLasPiezas(true);
+        articulo.setEsteticaCorrecta(true);
+        if (articulo instanceof Carrito) {
+            ((Carrito) articulo).setEngancheCorrecto(true);
+        }
+        articulo.anadirRegistroTareas("Artículo reparado");
+    }
 }
