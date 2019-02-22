@@ -1,8 +1,12 @@
 package es.uam.eps.ads.p2.apartado5;
 
+import java.util.Objects;
+
 public class Tester {
     public static void main(String[] args) {
         Sistema tienda = new Sistema();
+        int fallos_totales = 0;
+        int pruebas_totales = 0;
 
         Articulo cuna1 = new Cuna("Cuna1");
         Articulo carrito1 = new Carrito("Carrito1", "Marca1", "Modelo1", "Color1", 
@@ -47,11 +51,13 @@ public class Tester {
         silla_aux.setAnclajesCorrectos(false);
         silla_aux.setAcolchadoCorrecto(false);
         silla_aux.setEnReparacion(false);
+
         silla_aux = (Silla) tienda.encontrarArticulo("Silla2");
         silla_aux.setTieneTodasLasPiezas(false);
         silla_aux.setAnclajesCorrectos(true);
         silla_aux.setAcolchadoCorrecto(true);
         silla_aux.setEnReparacion(false);
+
         silla_aux = (Silla) tienda.encontrarArticulo("Silla3");
         silla_aux.setTieneTodasLasPiezas(true);
         silla_aux.setAnclajesCorrectos(true);

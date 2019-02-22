@@ -37,7 +37,7 @@ public class Silla extends ArticuloReparable {
     public String toString() {
         return "[Silla " + codigoDeBarras + ", marca " + marca
         + ", modelo " + modelo + ", color " + color + ", rango de peso: [" + 
-        pesoMinimo + ", " + pesoMaximo + "]";
+        pesoMinimo + ", " + pesoMaximo + "]]";
     }
 
     /**
