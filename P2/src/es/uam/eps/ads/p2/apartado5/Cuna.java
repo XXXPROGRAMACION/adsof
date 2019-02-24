@@ -27,7 +27,7 @@ public class Cuna extends Articulo {
 
     /**
      * Permite modificar el valor de corrección del pliegue de una cuna.
-     * @param pliegueCorrecto Valor de la correción del pliegue de la cuna
+     * @param pliegeCorrecto Valor de la correción del pliegue de la cuna
      */
     public void setPliegueCorrecto(boolean pliegeCorrecto) {
         this.pliegeCorrecto = pliegeCorrecto;
