@@ -15,7 +15,7 @@ public abstract class ArticuloReparable extends Articulo {
     protected String color;
     protected boolean tieneTodasLasPiezas;
     protected boolean anclajesCorrectos;
-    protected boolean acholchadoCorrecto;
+    protected boolean acolchadoCorrecto;
     protected boolean enReparacion;
     protected List<String> registroTareas = new ArrayList<>();
 
@@ -109,8 +109,8 @@ public abstract class ArticuloReparable extends Articulo {
      * @param acolchadoCorrecto Marca si el acolchado del artículo es correcto
      * o, si por el contrario presenta defectos
      */
-    public void setAcolchadoCorrecto(boolean acholchadoCorrecto) {
-        this.acholchadoCorrecto = acholchadoCorrecto;
+    public void setAcolchadoCorrecto(boolean acolchadoCorrecto) {
+        this.acolchadoCorrecto = acolchadoCorrecto;
     }
 
     /**
@@ -119,7 +119,7 @@ public abstract class ArticuloReparable extends Articulo {
      * "false" en caso contrario
      */
     public boolean getAcolchadoCorrecto() {
-        return acholchadoCorrecto;
+        return acolchadoCorrecto;
     }
 
     /**
