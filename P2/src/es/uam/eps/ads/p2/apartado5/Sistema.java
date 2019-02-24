@@ -15,9 +15,16 @@ public class Sistema {
     /**
      * Permite añadir artículos al sistema.
      * @param articulo Artículo a añadir en el sistema
+     * @return "true" si se ha podido añadir el artículo al sistema, o "false"
+     * si no se ha podido añadir porque ya existía en el sistema un artículo
+     * con el mismo código de barras
      */
-    public void anadirArticulo(Articulo articulo) {
+    public boolean anadirArticulo(Articulo articulo) {
+        if (codigoRegistrado(articulo.getCodigoDeBarras())) {
+            return false;
+        }
         articulos.add(articulo);
+        return true;
     }
 
     /**
