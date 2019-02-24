@@ -1,18 +1,14 @@
 package es.uam.eps.ads.p2.apartado5;
 
-import java.util.Objects;
-
 public class Tester {
     public static void main(String[] args) {
         Sistema tienda = new Sistema();
-        int fallos_totales = 0;
-        int pruebas_totales = 0;
 
         Articulo cuna1 = new Cuna("Cuna1");
-        Articulo carrito1 = new Carrito("Carrito1", "Marca1", "Modelo1", "Color1", 
-                                        false, false, true);
-        Articulo carrito2 = new Carrito("Carrito2", "Marca2", "Modelo2", "Color2", 
-                                        true, true, false);
+        Articulo carrito1 = new Carrito("Carrito1", "Marca1", "Modelo1", 
+                                        "Color1", false, false, true);
+        Articulo carrito2 = new Carrito("Carrito2", "Marca2", "Modelo2", 
+                                        "Color2", false, false, true);
         Articulo silla1 = new Silla("Silla1", "Marca3", "Modelo3", "Color3", 0,
                                     100, true);
         Articulo silla2 = new Silla("Silla2", "Marca4", "Modelo4", "Color4", 50,
@@ -29,40 +25,41 @@ public class Tester {
         tienda.anadirArticulo(silla3);
 
         //Proceso de verificación
-        Cuna cuna_aux = (Cuna) tienda.encontrarArticulo("Cuna1");
-        cuna_aux.setPliegueCorrecto(true);
-        cuna_aux.setEsteticaCorrecta(true);
+        Cuna cunaAux = (Cuna) tienda.encontrarArticulo("Cuna1");
+        cunaAux.setPliegueCorrecto(true);
+        cunaAux.setEsteticaCorrecta(true);
 
-        Carrito carrito_aux = (Carrito) tienda.encontrarArticulo("Carrito1");
-        carrito_aux.setEngancheCorrecto(true);
-        carrito_aux.setTieneTodasLasPiezas(true);
-        carrito_aux.setAnclajesCorrectos(true);
-        carrito_aux.setAcolchadoCorrecto(true);
-        carrito_aux.setEnReparacion(false);
-        carrito_aux = (Carrito) tienda.encontrarArticulo("Carrito2");
-        carrito_aux.setEngancheCorrecto(false);
-        carrito_aux.setTieneTodasLasPiezas(false);
-        carrito_aux.setAnclajesCorrectos(false);
-        carrito_aux.setAcolchadoCorrecto(false);
-        carrito_aux.setEnReparacion(false);
+        Carrito carritoAux = (Carrito) tienda.encontrarArticulo("Carrito1");
+        carritoAux.setEngancheCorrecto(true);
+        carritoAux.setTieneTodasLasPiezas(true);
+        carritoAux.setAnclajesCorrectos(true);
+        carritoAux.setAcolchadoCorrecto(true);
+        carritoAux.setEnReparacion(false);
+
+        carritoAux = (Carrito) tienda.encontrarArticulo("Carrito2");
+        carritoAux.setEngancheCorrecto(false);
+        carritoAux.setTieneTodasLasPiezas(false);
+        carritoAux.setAnclajesCorrectos(false);
+        carritoAux.setAcolchadoCorrecto(false);
+        carritoAux.setEnReparacion(false);
         
-        Silla silla_aux = (Silla) tienda.encontrarArticulo("Silla1");
-        silla_aux.setTieneTodasLasPiezas(false);
-        silla_aux.setAnclajesCorrectos(false);
-        silla_aux.setAcolchadoCorrecto(false);
-        silla_aux.setEnReparacion(false);
+        Silla sillaAux = (Silla) tienda.encontrarArticulo("Silla1");
+        sillaAux.setTieneTodasLasPiezas(false);
+        sillaAux.setAnclajesCorrectos(false);
+        sillaAux.setAcolchadoCorrecto(false);
+        sillaAux.setEnReparacion(false);
 
-        silla_aux = (Silla) tienda.encontrarArticulo("Silla2");
-        silla_aux.setTieneTodasLasPiezas(false);
-        silla_aux.setAnclajesCorrectos(true);
-        silla_aux.setAcolchadoCorrecto(true);
-        silla_aux.setEnReparacion(false);
+        sillaAux = (Silla) tienda.encontrarArticulo("Silla2");
+        sillaAux.setTieneTodasLasPiezas(false);
+        sillaAux.setAnclajesCorrectos(true);
+        sillaAux.setAcolchadoCorrecto(true);
+        sillaAux.setEnReparacion(false);
 
-        silla_aux = (Silla) tienda.encontrarArticulo("Silla3");
-        silla_aux.setTieneTodasLasPiezas(true);
-        silla_aux.setAnclajesCorrectos(true);
-        silla_aux.setAcolchadoCorrecto(true);
-        silla_aux.setEnReparacion(false);
+        sillaAux = (Silla) tienda.encontrarArticulo("Silla3");
+        sillaAux.setTieneTodasLasPiezas(true);
+        sillaAux.setAnclajesCorrectos(true);
+        sillaAux.setAcolchadoCorrecto(true);
+        sillaAux.setEnReparacion(false);
 
         //Envío al fabricante de los artículos
         tienda.enviarAlFabricante("Carrito2");
@@ -77,7 +74,16 @@ public class Tester {
         tienda.recibirDelFabricante("Silla3");
 
         //Impresión de todos los artículos del almacén
+        System.out.println("Todos los articulos de la tienda:");
         tienda.imprimirArticulos();
+
+        //Impresión de tres sillitas en perfecto estado
+        System.out.println("Las tres sillas en perfecto estado son:");
+        sillaAux = (Silla) tienda.encontrarArticulo("Silla1");
+        System.out.println(sillaAux);
+        sillaAux = (Silla) tienda.encontrarArticulo("Silla2");
+        System.out.println(sillaAux);
+        sillaAux = (Silla) tienda.encontrarArticulo("Silla3");
+        System.out.println(sillaAux);
     }
-           
 }

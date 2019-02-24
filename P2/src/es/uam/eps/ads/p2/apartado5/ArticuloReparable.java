@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
-public abstract class ArticuloReparable extends Articulo{
+public abstract class ArticuloReparable extends Articulo {
     protected String marca;
     protected String modelo;
     protected String color;
@@ -164,6 +164,6 @@ public abstract class ArticuloReparable extends Articulo{
      */
     @Override
     public boolean esApto() {
-        return tieneTodasLasPiezas && anclajesCorrectos;
+        return tieneTodasLasPiezas && anclajesCorrectos && !enReparacion;
     }
 }
