@@ -1,18 +1,14 @@
 package es.uam.eps.ads.p2.apartado5;
 
-import java.util.Objects;
-
 public class Tester {
     public static void main(String[] args) {
         Sistema tienda = new Sistema();
-        int fallos_totales = 0;
-        int pruebas_totales = 0;
 
         Articulo cuna1 = new Cuna("Cuna1");
-        Articulo carrito1 = new Carrito("Carrito1", "Marca1", "Modelo1", "Color1", 
-                                        false, false, true);
-        Articulo carrito2 = new Carrito("Carrito2", "Marca2", "Modelo2", "Color2", 
-                                        true, true, false);
+        Articulo carrito1 = new Carrito("Carrito1", "Marca1", "Modelo1", 
+                                        "Color1", false, false, true);
+        Articulo carrito2 = new Carrito("Carrito2", "Marca2", "Modelo2", 
+                                        "Color2", false, false, true);
         Articulo silla1 = new Silla("Silla1", "Marca3", "Modelo3", "Color3", 0,
                                     100, true);
         Articulo silla2 = new Silla("Silla2", "Marca4", "Modelo4", "Color4", 50,
@@ -39,6 +35,7 @@ public class Tester {
         carrito_aux.setAnclajesCorrectos(true);
         carrito_aux.setAcolchadoCorrecto(true);
         carrito_aux.setEnReparacion(false);
+
         carrito_aux = (Carrito) tienda.encontrarArticulo("Carrito2");
         carrito_aux.setEngancheCorrecto(false);
         carrito_aux.setTieneTodasLasPiezas(false);
@@ -77,7 +74,16 @@ public class Tester {
         tienda.recibirDelFabricante("Silla3");
 
         //Impresión de todos los artículos del almacén
+        System.out.println("Todos los articulos de la tienda:");
         tienda.imprimirArticulos();
+
+        //Impresión de tres sillitas en perfecto estado
+        System.out.println("Las tres sillas en perfecto estado son:");
+        silla_aux = (Silla) tienda.encontrarArticulo("Silla1");
+        System.out.println(silla_aux);
+        silla_aux = (Silla) tienda.encontrarArticulo("Silla2");
+        System.out.println(silla_aux);
+        silla_aux = (Silla) tienda.encontrarArticulo("Silla3");
+        System.out.println(silla_aux);
     }
-           
 }
