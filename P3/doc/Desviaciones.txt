@@ -1,0 +1,2 @@
+1) Creada la función getNumeroCaminos() en Posada.
+2) Creada la función existeCamino(Camino camino) en Posada.

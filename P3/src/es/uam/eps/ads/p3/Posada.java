@@ -53,6 +53,19 @@ public class Posada {
     }
 
     /**
+     * Indica si el camino dado está presente en los caminos de la posada.
+     * @param camino Camino a comprobar si está presente
+     * @return "true" en caso de que algún camino presente en Caminos sea 
+     *         equivalente al camino pasado o "false" en caso contrario
+     */
+    public boolean existeCamino(Camino camino) {
+        for (Camino caminoAux : caminos) {
+            if (Objects.equals(caminoAux, camino) == true) return true;
+        }
+        return false;
+    }
+
+    /**
      * Devuelve el nombre de la posada.
      * @return Nombre de la posada
      */
@@ -90,6 +103,14 @@ public class Posada {
             }
         }
         return null;
+    }
+
+    /**
+     * Devuelve el numero de caminos que parten de la posada.
+     * @return El numero de caminos que parten de la posada.
+     */
+    public int getNumeroCaminos() {
+        return caminos.size();
     }
 
     /**

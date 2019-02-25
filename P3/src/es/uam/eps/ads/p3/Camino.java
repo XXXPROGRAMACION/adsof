@@ -1,5 +1,7 @@
 package es.uam.eps.ads.p3;
 
+import java.util.Objects;
+
 /**
  * <p>Esta clase permite trabajar con caminos.</p>
  * 
@@ -92,7 +94,7 @@ public class Camino {
      *         especial
      */
     public int getCosteReal() {
-        return getCoste()+getCosteEspecial();
+        return coste+getCosteEspecial();
     }
 
     /**
@@ -102,4 +104,10 @@ public class Camino {
     public String toString() {
         return "(" + origen + "--" + coste + "-->" + destino + ")";
     }
+
+    public boolean equals(Camino camino) {
+        return Objects.equals(camino.origen, origen)
+               && Objects.equals(camino.destino, destino) 
+               && camino.coste == coste;
+    } 
 }
