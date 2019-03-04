@@ -102,7 +102,8 @@ public class Camino {
      * @return String indicando el origen, el coste y el destino
      */
     public String toString() {
-        return "(" + origen + "--" + coste + "-->" + destino + ")";
+        return "(" + origen.getNombre() + "--" + coste + "-->" 
+        + destino.getNombre() + ")";
     }
 
     public boolean equals(Camino camino) {

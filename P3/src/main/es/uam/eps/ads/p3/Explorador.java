@@ -32,7 +32,7 @@ public class Explorador {
      * posada actual y el explorador puede recorrerlo y alojarse en la posada
      * destino. "false" en caso contrario.
      */
-    public boolean recorre(Camino camino) {
+    public boolean recorre(Camino camino) {        
         if (!posadaActual.existeCamino(camino)
             || !puedeRecorrerCamino(camino)
             || !puedeAlojarseEn(camino.getDestino())) return false;

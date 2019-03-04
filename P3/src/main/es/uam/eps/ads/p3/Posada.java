@@ -44,8 +44,8 @@ public class Posada {
      *         destino de la posada sea el mismo
      */
     public boolean addCamino(Camino camino) {
-        if (Objects.equals(this, camino.getOrigen()) || 
-            !Objects.equals(this, camino.getDestino())) {
+        if (!Objects.equals(this, camino.getOrigen()) || 
+            Objects.equals(this, camino.getDestino())) {
             return false;
         }
         caminos.add(camino);
@@ -91,18 +91,23 @@ public class Posada {
     }
     
     /**
-     * Devuelve el camino que llega a la posada pasada por argumento.
+     * Devuelve el camino mínimo que llega a la posada pasada por argumento.
      * @param posada Posada destino del camino a buscar
-     * @return El camino que conecta las dos posadas, o "null" en caso de que no
-     *         exista un camino que conecte las dos posadas de esta manera
+     * @return El camino con menor coste real que conecta las dos posadas, o 
+     *         "null" en caso de que no exista un camino que conecte las dos 
+     *         posadas de esta manera
      */
     public Camino getCamino(Posada posada) {
+        Camino caminoMin = null;
         for (Camino camino : caminos) {
             if (Objects.equals(camino.getDestino(), posada)) {
-                return camino;
+                if (caminoMin == null 
+                    || camino.getCosteReal() < caminoMin.getCosteReal()) {
+                    caminoMin = camino;
+                }
             }
         }
-        return null;
+        return caminoMin;
     }
 
     /**
