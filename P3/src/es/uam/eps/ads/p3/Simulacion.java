@@ -5,18 +5,38 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Objects;
 
+/**
+ * <p>Esta clase permite trabajar con simulaciones.</p>
+ * 
+ * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
+ *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
+ */
 public class Simulacion {
 
     List<Posada> posadas = new ArrayList<>();
 
+    /**
+     * Inicializa una simulación con los nombres de sus ficheros.
+     * @param archivoPosadas El nombre del fichero con la información de posadas
+     * @param archivoCaminos El nombre del fichero con la información de caminos
+     * @param archivoExplorador El nombre del fichero con la información del
+     *                          explorador, así como las posadas a recorrer
+     * @throws IOException En caso de que alguna de sus funciones lo lance
+     */
     public Simulacion(String archivoPosadas, String archivoCaminos, 
-                      String archivoExplorador) throws IOException {
-                          
+                      String archivoExplorador) throws IOException {                          
         cargarPosadas(archivoPosadas);
         cargarCaminos(archivoCaminos);
         ejecutarSimulacion(archivoExplorador);
     }
 
+    /**
+     * Carga todas las posadas descritas en el archivo indicado.
+     * @param archivoPosadas Nombre del fichero con la información de posadas
+     * @throws IOException En caso de no existir el fichero que define las
+     *                     posadas, estar este mal definido o producirse un 
+     *                     error en su lectura
+     */
     private void cargarPosadas(String archivoPosadas) throws IOException {
         FileInputStream stream = new FileInputStream(archivoPosadas);
         InputStreamReader reader = new InputStreamReader(stream);
@@ -43,6 +63,12 @@ public class Simulacion {
         buffer.close();
     }
 
+    /**
+     * Devuelve una posada presente en la simulación dado su nombre.
+     * @param nombrePosada El nombre de la posada que se busca obtener
+     * @return La posada presente en la simulación con el nombre indicado o 
+     *         "null" en caso de no encontrarse
+     */
     private Posada buscarPosada(String nombrePosada) {
         for (Posada posada : posadas) {
             if (Objects.equals(posada.getNombre(), nombrePosada)) {
@@ -52,6 +78,13 @@ public class Simulacion {
         return null;
     }
 
+    /**
+     * Carga todos los caminos descritos en el archivo indicado.
+     * @param archivoCaminos Nombre del fichero con la información de caminos
+     * @throws IOException En caso de no existir el fichero que define los
+     *                     caminos, estar este mal definido o producirse un 
+     *                     error en su lectura
+     */
     private void cargarCaminos(String archivoCaminos) throws IOException {
         FileInputStream stream = new FileInputStream(archivoCaminos);
         InputStreamReader reader = new InputStreamReader(stream);
@@ -91,6 +124,15 @@ public class Simulacion {
         buffer.close();
     }
 
+    /**
+     * Carga el explorador descrito en el fichero indicado y recorrer las
+     * posadas en el orden especificado.
+     * @param archivoExplorador Nombre del fichero con la información del
+     *                       explorador, así como las posadas a recorrer
+     * @throws IOException En caso de no existir el fichero que define al
+     *                     explorador y el recorrido, estar este mal definido o 
+     *                     producirse un error en su lectura
+     */
     private void ejecutarSimulacion(String archivoExplorador) 
     throws IOException {
         FileInputStream stream = new FileInputStream(archivoExplorador);

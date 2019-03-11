@@ -29,16 +29,17 @@ public class Explorador {
      * ha podido realizar el proceso o no.
      * @param camino Camino a recorrer por el explorador
      * @return "true" si el camino pasado es un camino válido presente en la 
-     * posada actual y el explorador puede recorrerlo y alojarse en la posada
-     * destino. "false" en caso contrario.
+     *         posada actual y el explorador puede recorrerlo y alojarse en la 
+     *         posada destino. "false" en caso contrario.
      */
     public boolean recorre(Camino camino) {        
-        if (!posadaActual.existeCamino(camino)
-            || !puedeRecorrerCamino(camino)
-            || !puedeAlojarseEn(camino.getDestino())) return false;
+        Posada destino = camino.getDestino();
+        
+        if (!posadaActual.existeCamino(camino) || !puedeRecorrerCamino(camino)
+            || !puedeAlojarseEn(destino)) return false;
                
-        posadaActual = camino.getDestino();
-        energia = energia-camino.getCoste()+posadaActual.getEnergiaRecuperada(); 
+        posadaActual = destino;
+        energia = energia-camino.getCoste()+destino.getEnergiaRecuperada(); 
 
         return true;
     }

@@ -49,6 +49,14 @@ public class Camino {
     }
 
     /**
+     * Indica que el camino no es una trampa
+     * @return "false"
+     */
+    public boolean esTrampa() {
+        return false;
+    }
+
+    /**
      * Devuelve el coste acumulado.
      * @return Coste acumulado de todas las instancias del camino
      */
