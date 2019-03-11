@@ -14,6 +14,7 @@ public class Posada {
     private String nombre;
     private int energiaRecuperada;
     private List<Camino> caminos = new ArrayList<>();
+    private Luz luz;
 
     /**
      * Inicializa una posada dado su nombre. Su energía recuperada en la posada
@@ -33,6 +34,17 @@ public class Posada {
     public Posada(String nombre, int energiaRecuperada) {
         this(nombre);
         this.energiaRecuperada = energiaRecuperada;
+    }
+
+    /**
+     * Inicializa una posada dados su nombre, energía recuperada y luz.
+     * @param nombre Nombre de la posada
+     * @param energiaRecuperada Energía recuperada en la posada
+     * @param luz Luz de la posada
+     */
+    public Posada(String nombre, int energiaRecuperada, Luz luz) {
+        this(nombre, energiaRecuperada);
+        this.luz = luz;
     }
 
     /**
@@ -63,6 +75,10 @@ public class Posada {
             if (Objects.equals(caminoAux, camino) == true) return true;
         }
         return false;
+    }
+
+    public void cambiarLuz(Luz luz) {
+        this.luz = luz;
     }
 
     /**
@@ -112,11 +128,21 @@ public class Posada {
 
     /**
      * Devuelve el numero de caminos que parten de la posada.
-     * @return El numero de caminos que parten de la posada.
+     * @return El numero de caminos que parten de la posada
      */
     public int getNumeroCaminos() {
         return caminos.size();
     }
+
+    /**
+     * Devuelve la luz de la sala.
+     * @return Luz de la sala
+     */
+    public Luz getLuz() {
+        return luz;
+    }
+
+
 
     /**
      * Recoge la información de la instancia en una cadena de caracteres.
