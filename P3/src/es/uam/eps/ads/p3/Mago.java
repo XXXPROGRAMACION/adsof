@@ -25,21 +25,35 @@ public abstract class Mago extends Explorador {
 
     /**
      * Indica si el mago puede recorrer el camino pasado como argumento,
-     * basándose en el coste del camino, la energía del explorador y las
+     * basándose en el coste del camino, la energía del mago y las
      * condiciones del camino.
      * @param camino Camino para el que hacer la comprobación
      * @return "true" si puede recorrer el camino, "false" en caso contrario
      */
-    private boolean puedeRecorrerCamino(Camino camino) {
+    public boolean puedeRecorrerCamino(Camino camino) {
         return camino.getCoste() <= getEnergia() && !camino.esTrampa();
     }
 
-
+    public boolean puedeAlojarseEn(Posada posada) {
+        return true;
+    }
+    
     /**
      * Devuelve el poder del mago.
      * @return Poder del mago
      */
     public int getPoder() {
         return poder;
+    }
+
+    /**
+     * Recoge la información de la instancia en una cadena de caracteres.
+     * @return String con el nombre, la energía, el poder y la posada actual del 
+     *         mago
+     */
+    @Override
+    public String toString() {
+        return nombre + " (e:" + energia + ")(p: " + poder + ") en " +
+                                                    posadaActual.getNombre();
     }
 }

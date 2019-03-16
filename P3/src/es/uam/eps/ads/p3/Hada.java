@@ -2,7 +2,7 @@ package es.uam.eps.ads.p3;
 
 
 public class Hada extends Mago {
-    
+
     /**
      * Inicializa un hada dado su nombre, energía, posada actual y poder.
      * @param nombre Nombre del hada
@@ -15,7 +15,8 @@ public class Hada extends Mago {
         super(nombre, energia, posadaActual, poder);
     }
 
-    private boolean puedeAlojarseEn(Posada posada) {
+    @Override
+    public boolean puedeAlojarseEn(Posada posada) {
         if (posada.getLuz().getValor() > Luz.GRIS.getValor()) {
             return true;
         } else {

@@ -7,9 +7,9 @@ package es.uam.eps.ads.p3;
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
 public class Explorador {
-    private String nombre;
-    private int energia;
-    private Posada posadaActual;
+    protected String nombre;
+    protected int energia;
+    protected Posada posadaActual;
 
      /**
      * Inicializa un explorador dadas sus características.
@@ -111,6 +111,7 @@ public class Explorador {
      * @return String con el nombre, la energía y la posada actual del 
      *         explorador
      */
+    @Override
     public String toString() {
         return nombre + " (e:" + energia + ") en " + posadaActual.getNombre();
     }

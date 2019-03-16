@@ -142,15 +142,14 @@ public class Posada {
         return luz;
     }
 
-
-
     /**
      * Recoge la información de la instancia en una cadena de caracteres.
      * @return String con el nombre, la energía recuperada y los caminos que 
      *         parten de ella
      */
+    @Override
     public String toString() {
-        return nombre + "(" + energiaRecuperada + ")" + caminos;
+        return nombre + "(" + energiaRecuperada + ") (" + luz + ")" + caminos;
     }
     
     /**
