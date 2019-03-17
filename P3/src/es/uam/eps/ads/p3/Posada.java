@@ -25,6 +25,7 @@ public class Posada {
     public Posada(String nombre) {
         this.nombre = nombre;
         energiaRecuperada = 2;
+        luz = Luz.BLANCA;
     }
 
     /**
