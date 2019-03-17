@@ -1,0 +1,6 @@
+Para la implementación de las luces de las posadas hemos usado
+una enumeración con valores asociados por defecto que nos 
+permite comparar valores de luz cómodamente con una función
+nuestra. 
+La clase Mago es abstracta ya que todo mago ha de ser de
+alguno de los tipos de magos reconocidos
