@@ -15,6 +15,12 @@ public class Hada extends Mago {
         super(nombre, energia, posadaActual, poder);
     }
 
+    /**
+     * Comprueba si el Hada se puede alojar en la posada indicada.
+     * @return "true" si el nivel de luz de la Posada es superior al nivel de
+     * luz GRIS y no hay hechiceros alojados en la Posada. "false" en caso
+     * contrario
+     */
     @Override
     public boolean puedeAlojarseEn(Posada posada) {
         if (posada.hayHechicero() == true) return false;

@@ -14,6 +14,12 @@ public class Hechicero extends Mago {
         super(nombre, energia, posadaActual, poder);
     }
 
+    /**
+     * Comprueba si el Hechicero se puede alojar en la posada indicada.
+     * @return "true" si el nivel de luz de la Posada es inferior o igual al 
+     * nivel de luz TENEBROSA más el poder del Hechicero y no hay hadas alojadas
+     * en la Posada. "false" en caso contrario
+     */
     @Override
     public boolean puedeAlojarseEn(Posada posada) {
         if (posada.hayHada() == true) return false;
