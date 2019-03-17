@@ -1,13 +1,19 @@
 package es.uam.eps.ads.p3;
 
+/**
+ * <p>Esta clase permite trabajar con hechiceros.</p>
+ * 
+ * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
+ *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
+ */
 public class Hechicero extends Mago {
 
     /**
-     * Inicializa un Hechicero dado su nombre, energía, posada actual y poder.
-     * @param nombre Nombre del Hechicero
-     * @param energia Energia del Hechicero
-     * @param posadaActual Posada actual del Hechicero
-     * @param poder Poder del Hechicero
+     * Inicializa un hechicero dado su nombre, energía, posada actual y poder.
+     * @param nombre Nombre del hechicero
+     * @param energia Energia del hechicero
+     * @param posadaActual Posada actual del hechicero
+     * @param poder Poder del hechicero
      */
     public Hechicero(String nombre, int energia, Posada posadaActual, 
                 int poder) {
@@ -15,10 +21,10 @@ public class Hechicero extends Mago {
     }
 
     /**
-     * Comprueba si el Hechicero se puede alojar en la posada indicada.
-     * @return "true" si el nivel de luz de la Posada es inferior o igual al 
-     * nivel de luz TENEBROSA más el poder del Hechicero y no hay hadas alojadas
-     * en la Posada. "false" en caso contrario
+     * Comprueba si el hechicero se puede alojar en la posada indicada.
+     * @return "true" si el nivel de luz de la posada es inferior o igual al 
+     * nivel de luz TENEBROSA más el poder del hechicero y no hay hadas alojadas
+     * en la posada. "false" en caso contrario
      */
     @Override
     public boolean puedeAlojarseEn(Posada posada) {
