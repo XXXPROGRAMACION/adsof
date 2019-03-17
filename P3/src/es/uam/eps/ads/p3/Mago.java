@@ -34,11 +34,6 @@ public abstract class Mago extends Explorador {
     public boolean puedeRecorrerCamino(Camino camino) {
         return camino.getCoste() <= getEnergia() && !camino.esTrampa();
     }
-
-    @Override
-    public boolean puedeAlojarseEn(Posada posada) {
-        return true;
-    }
     
     /**
      * Devuelve el poder del mago.
@@ -55,7 +50,7 @@ public abstract class Mago extends Explorador {
      */
     @Override
     public String toString() {
-        return nombre + " (e:" + energia + ")(p: " + poder + ") en " +
+        return nombre + " (e:" + energia + ") (p:" + poder + ") en " +
                                                     posadaActual.getNombre();
     }
 }
