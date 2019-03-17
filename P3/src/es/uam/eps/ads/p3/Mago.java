@@ -1,6 +1,5 @@
 package es.uam.eps.ads.p3;
 
-
 /**
  * <p>Esta clase permite trabajar con magos.</p>
  * 
@@ -8,7 +7,8 @@ package es.uam.eps.ads.p3;
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
 public abstract class Mago extends Explorador {
-    int poder;
+    
+    private int poder;
 
     /**
      * Inicializa un mago dado su nombre, energía, posada actual y poder.
@@ -50,7 +50,7 @@ public abstract class Mago extends Explorador {
      */
     @Override
     public String toString() {
-        return nombre + " (e:" + energia + ") (p:" + poder + ") en " +
-               posadaActual.getNombre();
+        return getNombre() + " (e:" + getEnergia()+ ") (p:" + getPoder() + 
+               ") en " + getPosadaActual().getNombre();
     }
 }

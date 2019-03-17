@@ -24,7 +24,7 @@ public class Hechicero extends Mago {
     public boolean puedeAlojarseEn(Posada posada) {
         if (posada.hayHada() == true) return false;
 
-        if (posada.getLuz().getValor() <= Luz.TENEBROSA.getValor()+poder) {
+        if (posada.getLuz().getValor() <= Luz.TENEBROSA.getValor()+getPoder()) {
             return true;
         } else {
             return false;

@@ -7,9 +7,10 @@ package es.uam.eps.ads.p3;
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
 public class Explorador {
-    protected String nombre;
-    protected int energia;
-    protected Posada posadaActual;
+    
+    private String nombre;
+    private int energia;
+    private Posada posadaActual;
 
      /**
      * Inicializa un explorador dadas sus características.
