@@ -10,6 +10,16 @@ public class Trampa extends Camino {
     private float costeExtra;
     private float probabilidadRetorno;
 
+    /**
+     * Inicializa una trampa dadas sus características
+     * @param origen Posada de la que parte la trampa
+     * @param destino Posada a la que llega la trampa
+     * @param coste Coste energético de recorrer la trampa
+     * @param costeExtra Coeficiente que determina el coste extra al
+     *                   multiplicarlo por el coste normal
+     * @param probabilidadRetorno Probabilidad de volver a la posada origen al
+     *                            recorrer la trampa
+     */
     public Trampa(Posada origen, Posada destino, int coste, float costeExtra,
                   float probabilidadRetorno) {
         super(origen, destino, coste);
@@ -30,11 +40,12 @@ public class Trampa extends Camino {
      * Devuelve el destino o el origen, en base a la probabilidad establecida.
      * @return El destino o el origen, en base a la probabilidad establecida
      */
+    @Override
     public Posada getDestino() {
         if (Math.random() < probabilidadRetorno) {
             return getOrigen();
         } else {
-            return getDestino();
+            return super.getDestino();
         }
     }
 

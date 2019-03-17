@@ -23,9 +23,20 @@ public enum Luz {
 
     /**
      * Devuelve el valor de la luz dentro de la enumeración.
-     * @return El valor de la luz
+     * @return Valor de la luz
      */
     public int getValor() {
         return valor;
+    }
+
+    /**
+     * Devuelve el elemento correspondiente de la enumeración dado su valor.
+     * @return Elemento correspondiente de la enumeración dado su valor
+     */
+    public static Luz getLuz(int nivelLuz) {
+        for (Luz luz : Luz.values()) {
+            if (nivelLuz == luz.getValor()) return luz;
+        }
+        return null;
     }
 }

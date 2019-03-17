@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Simulacion {
 
     List<Posada> posadas = new ArrayList<>();
+    List<Explorador> exploradores = new ArrayList<>();
+    Explorador exploradorActual;
 
     /**
      * Inicializa una simulación con los nombres de sus ficheros.
@@ -24,7 +26,7 @@ public class Simulacion {
      * @throws IOException En caso de que alguna de sus funciones lo lance
      */
     public Simulacion(String archivoPosadas, String archivoCaminos, 
-                      String archivoExplorador) throws IOException {                          
+                      String archivoExplorador) throws IOException {
         cargarPosadas(archivoPosadas);
         cargarCaminos(archivoCaminos);
         ejecutarSimulacion(archivoExplorador);
@@ -45,19 +47,38 @@ public class Simulacion {
         String linea;
         while ((linea = buffer.readLine()) != null) {
             String[] palabras = linea.split("\\s+");
+
+            if (palabras.length != 2 && palabras.length != 3) {
+                buffer.close();
+                throw new IOException();
+            }
+
+            int energia;
+            try {
+                energia = Integer.parseInt(palabras[1]);
+            } catch (NumberFormatException e) {
+                buffer.close();
+                throw new IOException();
+            }
+
             if (palabras.length == 2) {
-                int energia;
+                posadas.add(new Posada(palabras[0], energia));
+            } else {
+                int nivelLuz = -1;
                 try {
-                    energia = Integer.parseInt(palabras[1]);
+                    energia = Integer.parseInt(palabras[2]);
                 } catch (NumberFormatException e) {
                     buffer.close();
                     throw new IOException();
                 }
-                posadas.add(new Posada(palabras[0], energia));
-            } else {
-                buffer.close();
-                throw new IOException();
-            }
+                Luz luz = Luz.getLuz(nivelLuz);
+                if (luz == null) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                posadas.add(new Posada(palabras[0], energia, luz));
+            }            
         }
 
         buffer.close();
@@ -94,30 +115,52 @@ public class Simulacion {
         while ((linea = buffer.readLine()) != null) {
             String[] palabras = linea.split("\\s+");
 
+            if (palabras.length != 3 && palabras.length != 5) {
+                buffer.close();
+                throw new IOException();
+            }
+
+            Posada origen = buscarPosada(palabras[0]);
+            if (origen == null) {
+                buffer.close();
+                throw new IOException();
+            }
+
+            Posada destino = buscarPosada(palabras[1]);
+            if (destino == null) {
+                buffer.close();
+                throw new IOException();
+            }
+
+            int coste;
+            try {
+                coste = Integer.parseInt(palabras[2]);
+            } catch (NumberFormatException e) {
+                buffer.close();
+                throw new IOException();
+            }
+
             if (palabras.length == 3) {
-                Posada origen = buscarPosada(palabras[0]);
-                if (origen == null) {
-                    buffer.close();
-                    throw new IOException();
-                }
-
-                Posada destino = buscarPosada(palabras[1]);
-                if (destino == null) {
-                    buffer.close();
-                    throw new IOException();
-                }
-
-                int coste;
+                origen.addCamino(new Camino(origen, destino, coste));
+            } else {
+                float costeExtra;
                 try {
-                    coste = Integer.parseInt(palabras[2]);
+                    costeExtra = Float.parseFloat(palabras[3]);
                 } catch (NumberFormatException e) {
                     buffer.close();
                     throw new IOException();
                 }
-                origen.addCamino(new Camino(origen, destino, coste));
-            } else {
-                buffer.close();
-                throw new IOException();
+
+                float probabilidadRetorno;
+                try {
+                    probabilidadRetorno = Float.parseFloat(palabras[4]);
+                } catch (NumberFormatException e) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                origen.addCamino(new Trampa(origen, destino, coste,
+                                    costeExtra, probabilidadRetorno));
             }
         }
 
@@ -128,7 +171,7 @@ public class Simulacion {
      * Carga el explorador descrito en el fichero indicado y recorrer las
      * posadas en el orden especificado.
      * @param archivoExplorador Nombre del fichero con la información del
-     *                       explorador, así como las posadas a recorrer
+     *                          explorador, así como las posadas a recorrer
      * @throws IOException En caso de no existir el fichero que define al
      *                     explorador y el recorrido, estar este mal definido o 
      *                     producirse un error en su lectura
@@ -139,46 +182,92 @@ public class Simulacion {
         InputStreamReader reader = new InputStreamReader(stream);
         BufferedReader buffer = new BufferedReader(reader);
 
-        String linea = buffer.readLine();
-        if (linea == null) {
-            buffer.close();
-            throw new IOException();
-        }
+        String linea;
+        while ((linea = buffer.readLine()) != null) {
+            String[] palabras = linea.split("\\s+");
 
-        String[] palabras = linea.split("\\s+");
-        if (palabras.length != 3) {
-            buffer.close();
-            throw new IOException();
-        }
+            if (palabras.length == 3 || palabras.length == 5) {
+                int energia;
+                try {
+                    energia = Integer.parseInt(palabras[1]);
+                } catch (NumberFormatException e) {
+                    buffer.close();
+                    throw new IOException();
+                }
+                
+                Posada posadaActual = buscarPosada(palabras[2]);
+                if (posadaActual == null) {
+                    buffer.close();
+                    throw new IOException();
+                }
 
-        int energia;
-        try {
-            energia = Integer.parseInt(palabras[1]);
-        } catch (NumberFormatException e) {
-            buffer.close();
-            throw new IOException();
-        }
-        
-        Posada posadaActual = buscarPosada(palabras[2]);
-        if (posadaActual == null) {
-            buffer.close();
-            throw new IOException();
-        }
+                if (palabras.length == 3) {
+                    exploradorActual = new Explorador(palabras[0], energia,
+                                                posadaActual);
+                } else {
+                    int tipoMago;
+                    try {
+                        tipoMago = Integer.parseInt(palabras[3]);
+                    } catch (NumberFormatException e) {
+                        buffer.close();
+                        throw new IOException();
+                    }
+                    if (tipoMago < 1 || tipoMago > 2) {
+                        buffer.close();
+                        throw new IOException();
+                    }
 
-        Explorador explorador = new Explorador(palabras[0], energia, 
-                                               posadaActual);
+                    int poder;
+                    try {
+                        poder = Integer.parseInt(palabras[4]);
+                    } catch (NumberFormatException e) {
+                        buffer.close();
+                        throw new IOException();
+                    }
 
-        String nombrePosada;
-        while ((nombrePosada = buffer.readLine()) != null) {
-            Posada siguientePosada = buscarPosada(nombrePosada);
-            if (siguientePosada == null) {
+                    if (tipoMago == 1) {
+                        exploradorActual = new Hada(palabras[0], energia, 
+                                            posadaActual, poder);
+                    } else {
+                        exploradorActual = new Hechizero(palabras[0], energia, 
+                                            posadaActual, poder);
+                    }
+                }
+                exploradores.add(exploradorActual);
+            } else if (palabras.length == 2) {
+                if (!Objects.equals(palabras[0], "E")) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                int indice;
+                try {
+                    indice = Integer.parseInt(palabras[1]);
+                } catch (NumberFormatException e) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                if (indice < 1 || indice > exploradores.size()) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                exploradorActual = exploradores.get(indice-1);
+            } else if (palabras.length == 1) {
+                Posada siguientePosada = buscarPosada(palabras[0]);
+                if (siguientePosada == null) {
+                    buffer.close();
+                    throw new IOException();
+                }
+
+                exploradorActual.recorre(siguientePosada);
+
+                System.out.println(exploradorActual);
+            } else {
                 buffer.close();
                 throw new IOException();
             }
-
-            explorador.recorre(siguientePosada);
-
-            System.out.println(explorador);
         }
 
         buffer.close();
