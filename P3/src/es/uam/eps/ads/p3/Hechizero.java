@@ -16,8 +16,6 @@ public class Hechizero extends Mago {
 
     @Override
     public boolean puedeAlojarseEn(Posada posada) {
-        System.out.println("Intenta ir a " + posada);
-        System.out.println(Integer.toString(posada.getLuz().getValor()) + " <= " + Integer.toString(Luz.TENEBROSA.getValor()+poder));
         if (posada.getLuz().getValor() <= Luz.TENEBROSA.getValor()+poder) {
             return true;
         } else {

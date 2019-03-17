@@ -68,7 +68,7 @@ public class Explorador {
      * @param camino Camino para el que hacer la comprobación
      * @return "true" si tiene suficiente energía. "false" en caso contrario
      */
-    private boolean puedeRecorrerCamino(Camino camino) {
+    public boolean puedeRecorrerCamino(Camino camino) {
         return camino.getCoste() <= energia;
     }
 
@@ -78,7 +78,7 @@ public class Explorador {
      * @param posada Posada para la que hacer la comprobación
      * @return "true" como valor predeterminado.
      */
-    private boolean puedeAlojarseEn(Posada posada) {
+    public boolean puedeAlojarseEn(Posada posada) {
         return true;
     }
 

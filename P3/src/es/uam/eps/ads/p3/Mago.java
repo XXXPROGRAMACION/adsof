@@ -30,10 +30,12 @@ public abstract class Mago extends Explorador {
      * @param camino Camino para el que hacer la comprobación
      * @return "true" si puede recorrer el camino, "false" en caso contrario
      */
+    @Override
     public boolean puedeRecorrerCamino(Camino camino) {
         return camino.getCoste() <= getEnergia() && !camino.esTrampa();
     }
 
+    @Override
     public boolean puedeAlojarseEn(Posada posada) {
         return true;
     }

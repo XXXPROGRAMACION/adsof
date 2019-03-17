@@ -38,8 +38,8 @@ public class PruebasMagos {
     // segunda. Una a una.
     private static void prueba2() {
         Posada posada1 = new Posada("Posada 1", 2, Luz.CLARA);
-        Posada posada2 = new Posada("Posada 2", 10, Luz.DIVINA);
-        Posada posada3 = new Posada("Posada 3", 0, Luz.DIABOLICA);
+        Posada posada2 = new Posada("Posada 2", 10, Luz.DIABOLICA);
+        Posada posada3 = new Posada("Posada 3", 0, Luz.DIVINA);
 
         posada1.addCamino(new Camino(posada1, posada2, 20));
         posada2.addCamino(new Camino(posada2, posada3, 20));      
@@ -58,14 +58,14 @@ public class PruebasMagos {
 
     // El explorador es capaz de recorrer toda la secuencia de posadas.
     private static void prueba3() {
-        Posada posada1 = new Posada("Posada 1");
-        Posada posada2 = new Posada("Posada 2", 10);
-        Posada posada3 = new Posada("Posada 3", 10);
-        Posada posada4 = new Posada("Posada 4", 10);
-        Posada posada5 = new Posada("Posada 5", 10);
-        Posada posada6 = new Posada("Posada 6", 0);
+        Posada posada1 = new Posada("Posada 1", 2, Luz.CLARA);
+        Posada posada2 = new Posada("Posada 2", 10, Luz.CLARA);
+        Posada posada3 = new Posada("Posada 3", 10, Luz.CLARA);
+        Posada posada4 = new Posada("Posada 4", 10, Luz.CLARA);
+        Posada posada5 = new Posada("Posada 5", 10, Luz.CLARA);
+        Posada posada6 = new Posada("Posada 6", 0, Luz.CLARA);
 
-        Explorador explorador1 = new Explorador("Explorador 1", 10, posada1);
+        Explorador explorador1 = new Hada("Hada 1", 10, posada1, 10);
 
         posada1.addCamino(new Camino(posada1, posada2, 10));
         posada2.addCamino(new Camino(posada2, posada3, 10));
@@ -88,14 +88,14 @@ public class PruebasMagos {
 
     // El explorador es capaz de recorrer parte de la secuencia de posadas.
     private static void prueba4() {
-        Posada posada1 = new Posada("Posada 1", 10);
-        Posada posada2 = new Posada("Posada 2", 10);
-        Posada posada3 = new Posada("Posada 3", 10);
-        Posada posada4 = new Posada("Posada 4", 10);
-        Posada posada5 = new Posada("Posada 5", 10);
-        Posada posada6 = new Posada("Posada 6", 10);
+        Posada posada1 = new Posada("Posada 1", 10, Luz.GRIS);
+        Posada posada2 = new Posada("Posada 2", 10, Luz.GRIS);
+        Posada posada3 = new Posada("Posada 3", 10, Luz.DIVINA);
+        Posada posada4 = new Posada("Posada 4", 10, Luz.GRIS);
+        Posada posada5 = new Posada("Posada 5", 10, Luz.DIVINA);
+        Posada posada6 = new Posada("Posada 6", 10, Luz.GRIS);
 
-        Explorador explorador1 = new Explorador("Explorador 1", 10, posada1);
+        Explorador explorador1 = new Hechizero("Hechizero 1", 10, posada1, 2);
 
         posada1.addCamino(new Camino(posada1, posada2, 10));
         posada2.addCamino(new Camino(posada2, posada3, 200));
