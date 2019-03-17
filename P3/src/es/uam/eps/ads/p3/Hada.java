@@ -17,6 +17,8 @@ public class Hada extends Mago {
 
     @Override
     public boolean puedeAlojarseEn(Posada posada) {
+        if (posada.hayHechicero() == true) return false;
+
         if (posada.getLuz().getValor() > Luz.GRIS.getValor()) {
             return true;
         } else {

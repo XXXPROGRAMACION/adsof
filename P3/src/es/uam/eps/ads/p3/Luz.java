@@ -39,4 +39,26 @@ public enum Luz {
         }
         return null;
     }
+
+    /**
+     * Devuelve el nivel de luz directamente superior al pasado como argumento,
+     * o el mismo en caso de ser ese nivel el máximo.
+     * @param luz Luz inicial
+     * @return Luz final
+     */
+    public static Luz aumentar(Luz luz) {
+        if (luz == DIVINA) return DIVINA;            
+        return getLuz(luz.getValor()+1);
+    }
+
+    /**
+     * Devuelve el nivel de luz directamente inferior al pasado como argumento,
+     * o el mismo en caso de ser ese nivel el mínimo.
+     * @param luz Luz inicial
+     * @return Luz final
+     */
+    public static Luz reducir(Luz luz) {
+        if (luz == DIABOLICA) return DIVINA;            
+        return getLuz(luz.getValor()-1);
+    }
 }

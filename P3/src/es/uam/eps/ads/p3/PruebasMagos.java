@@ -44,7 +44,7 @@ public class PruebasMagos {
         posada1.addCamino(new Camino(posada1, posada2, 20));
         posada2.addCamino(new Camino(posada2, posada3, 20));      
 
-        Explorador explorador1 = new Hechizero("Hechizero 1", 30, posada1, 2);
+        Explorador explorador1 = new Hechicero("Hechicero 1", 30, posada1, 2);
         System.out.println("\t" + explorador1);
 
         intentaRecorrer(explorador1, posada2);
@@ -95,7 +95,7 @@ public class PruebasMagos {
         Posada posada5 = new Posada("Posada 5", 10, Luz.DIVINA);
         Posada posada6 = new Posada("Posada 6", 10, Luz.GRIS);
 
-        Explorador explorador1 = new Hechizero("Hechizero 1", 10, posada1, 2);
+        Explorador explorador1 = new Hechicero("Hechicero 1", 10, posada1, 2);
 
         posada1.addCamino(new Camino(posada1, posada2, 10));
         posada2.addCamino(new Camino(posada2, posada3, 200));

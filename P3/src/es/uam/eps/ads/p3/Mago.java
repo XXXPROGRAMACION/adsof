@@ -51,6 +51,6 @@ public abstract class Mago extends Explorador {
     @Override
     public String toString() {
         return nombre + " (e:" + energia + ") (p:" + poder + ") en " +
-                                                    posadaActual.getNombre();
+               posadaActual.getNombre();
     }
 }

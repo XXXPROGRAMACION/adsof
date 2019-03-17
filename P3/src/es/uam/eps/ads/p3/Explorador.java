@@ -20,7 +20,7 @@ public class Explorador {
     public Explorador(String nombre, int energia, Posada posadaActual) {
         this.nombre = nombre;
         this.energia = energia;
-        this.posadaActual = posadaActual;
+        setPosadaActual(posadaActual);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Explorador {
         if (!posadaActual.existeCamino(camino) || !puedeRecorrerCamino(camino)
             || !puedeAlojarseEn(destino)) return false;
                
-        posadaActual = destino;
+        setPosadaActual(destino);
         energia = energia-camino.getCoste()+destino.getEnergiaRecuperada(); 
 
         return true;
@@ -81,7 +81,7 @@ public class Explorador {
     public boolean puedeAlojarseEn(Posada posada) {
         return true;
     }
-
+    
     /** 
      * Devuelve el nombre del explorador.
      * @return Nombre del explorador
@@ -114,5 +114,12 @@ public class Explorador {
     @Override
     public String toString() {
         return nombre + " (e:" + energia + ") en " + posadaActual.getNombre();
+    }
+
+    // Establece la nueva posada actual y notifica a las posadas
+    private void setPosadaActual(Posada posada) {
+        if (posadaActual != null) posadaActual.eliminarExplorador(this);
+        posada.anadirExplorador(this);
+        posadaActual = posada;
     }
 }

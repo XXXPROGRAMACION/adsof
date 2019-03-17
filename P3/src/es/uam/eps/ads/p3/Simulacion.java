@@ -229,7 +229,7 @@ public class Simulacion {
                         exploradorActual = new Hada(palabras[0], energia, 
                                             posadaActual, poder);
                     } else {
-                        exploradorActual = new Hechizero(palabras[0], energia, 
+                        exploradorActual = new Hechicero(palabras[0], energia, 
                                             posadaActual, poder);
                     }
                 }

@@ -14,6 +14,7 @@ public class Posada {
     private String nombre;
     private int energiaRecuperada;
     private List<Camino> caminos = new ArrayList<>();
+    private List<Explorador> exploradores = new ArrayList<>();
     private Luz luz;
 
     /**
@@ -77,6 +78,10 @@ public class Posada {
         return false;
     }
 
+    /**
+     * Establece la nueva categoría de luz de la posada.
+     * @param luz Nueva categoría de luz
+     */
     public void cambiarLuz(Luz luz) {
         this.luz = luz;
     }
@@ -135,11 +140,59 @@ public class Posada {
     }
 
     /**
-     * Devuelve la luz de la sala.
-     * @return Luz de la sala
+     * Devuelve la categoría de luz de la posada.
+     * @return Categoría de luz de la posada
      */
     public Luz getLuz() {
         return luz;
+    }
+
+    /** 
+     * Añade el explorador pasado como argumento a la lista de exploradores 
+     * alojados en la posada.
+     * @param explorador Explorador a añadir
+     */
+    public void anadirExplorador(Explorador explorador) {
+        if (explorador instanceof Hada) {
+            luz = Luz.aumentar(luz);
+        } else if (explorador instanceof Hechicero) {
+            luz = Luz.reducir(luz);
+        }
+
+        exploradores.add(explorador);
+    }
+
+    /**
+     * Elimina el explorador pasado como argumento de la lista de exploradores
+     * alojados en la posada.
+     * @param explorador Explorador a eliminar.
+     */
+    public void eliminarExplorador(Explorador explorador) {
+        exploradores.remove(explorador);
+    }
+
+    /** 
+     * Comprueba si hay algún hada alojada en la posada.
+     * @return "true" si hay algún hada alojada en la posada. "false" en caso
+     * contrario
+     */
+    public boolean hayHada() {
+        for (Explorador explorador : exploradores) {
+            if (explorador instanceof Hada) return true;
+        }
+        return false;
+    }
+
+    /** 
+     * Comprueba si hay algún hechicero alojado en la posada.
+     * @return "true" si hay algún hechicero alojado en la posada. "false" en 
+     * caso contrario
+     */
+    public boolean hayHechicero() {
+        for (Explorador explorador : exploradores) {
+            if (explorador instanceof Hechicero) return true;
+        }
+        return false;
     }
 
     /**
