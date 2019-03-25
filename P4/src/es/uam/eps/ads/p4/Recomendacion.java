@@ -11,4 +11,10 @@ public class Recomendacion {
         this.usuario = usuario;
         this.recomendaciones = recomendaciones;
     }
+
+    @Override 
+    public String toString() {
+        return "Recomendacion [usuario=" + usuario + ", recomendaciones="
+               + recomendaciones + "]";
+    }
 }

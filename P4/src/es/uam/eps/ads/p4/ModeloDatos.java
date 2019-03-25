@@ -9,4 +9,5 @@ public interface ModeloDatos {
     public Map<Long, Double> getPreferenciasItem(Long item);
     public Set<Long> getUsuariosUnicos();
     public Set<Long> getItemsUnicos();
+    public boolean getCorrecto();
 }

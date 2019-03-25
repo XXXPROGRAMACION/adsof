@@ -9,8 +9,10 @@ import java.io.*;
 public class ModeloDatosHash implements ModeloDatos {
     private Map<Long, Map<Long, Double>> usuarios = new HashMap<>();
     private Map<Long, Map<Long, Double>> items = new HashMap<>();
+    private boolean lecturaCorrecta = false;
 
     public void leeFicheroPreferencias(String ruta) {
+        lecturaCorrecta = false;
         try (FileInputStream stream = new FileInputStream(ruta);
             InputStreamReader reader = new InputStreamReader(stream);
             BufferedReader buffer = new BufferedReader(reader);) {
@@ -41,9 +43,10 @@ public class ModeloDatosHash implements ModeloDatos {
                     items.put(idItem, preferenciasItem);
                 }
 
-                preferenciasUsuario.put(idUsuario, puntuacion);
+                preferenciasItem.put(idUsuario, puntuacion);
             }
 
+            lecturaCorrecta = true;
             buffer.close();
         } catch (IOException e) {
             System.out.println("Error leyendo preferencias.");
@@ -53,10 +56,12 @@ public class ModeloDatosHash implements ModeloDatos {
     }
 
     public Map<Long, Double> getPreferenciasUsuario(Long usuario) {
+        if (usuarios.get(usuario) == null) return null;
         return Collections.unmodifiableMap(usuarios.get(usuario));
     }
 
     public Map<Long, Double> getPreferenciasItem(Long item) {
+        if (items.get(item) == null) return null;
         return Collections.unmodifiableMap(items.get(item));
     }
 
@@ -66,5 +71,9 @@ public class ModeloDatosHash implements ModeloDatos {
     
     public Set<Long> getItemsUnicos() {
         return Collections.unmodifiableSet(items.keySet());
+    }
+
+    public boolean getCorrecto() {
+        return lecturaCorrecta;
     }
 }
