@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 
-public class MetricaPrecision implements Metrica {
+public class MetricaPrecision extends MetricaDeFichero {
     ModeloDatos modeloDatos;
     double notaMinima;
 
@@ -23,17 +23,14 @@ public class MetricaPrecision implements Metrica {
         }
 
         Set<Long> itemsRelevantes = getItemsRelevantes(rec.getUsuario());
-
-        if (itemsRelevantes == null) {
+        if (itemsRelevantes.size() == 0) {
             throw new UsuarioNoRelevante();
         }
 
         int comunes = 0;
 
         for (long i : itemsRecomendados) {
-            if (itemsRelevantes.contains(i)) {
-                comunes++;
-            }
+            if (itemsRelevantes.contains(i)) comunes++;
         }
 
         return (double) comunes/n;
@@ -44,6 +41,7 @@ public class MetricaPrecision implements Metrica {
         Set<Long> itemsRelevantes = new HashSet<>();
 
         Map<Long, Double> preferencias = modeloDatos.getPreferenciasUsuario(u);
+        //System.out.println(u + " - " + preferencias.size());
         for (long i : preferencias.keySet()) {
             if (preferencias.get(i) >= notaMinima) {
                 itemsRelevantes.add(i);

@@ -7,7 +7,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.List;
 
-public class RecomendadorVecinos implements Recomendador, Similitud {
+public class RecomendadorVecinos extends RecomendadorSerializable 
+                                 implements Similitud {
     private ModeloDatos modeloDatos;
     private final int k;
     private Map<Long, List<Tupla>> relaciones = new HashMap<>();
@@ -45,7 +46,6 @@ public class RecomendadorVecinos implements Recomendador, Similitud {
             if (preferenciasU.containsKey(o)) continue;
             double puntuacionTotal = 0;
             for (Tupla t : similitudes) {
-                //System.out.println("Recomendacion: " + t);
                 Map<Long, Double> preferenciasV =
                         modeloDatos.getPreferenciasUsuario(t.id);
                 Double valoracion = preferenciasV.get(o);

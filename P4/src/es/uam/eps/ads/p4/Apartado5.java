@@ -1,7 +1,5 @@
 package es.uam.eps.ads.p4;
 
-
-
 public class Apartado5 {
     public static final int notaMinima = 2;
     public static final int k = 5;
@@ -9,7 +7,6 @@ public class Apartado5 {
     public static final int tamRecomendacion = 5;
 
     public static void main(String[] args) {
-
         if (args.length != 2) {
             System.out.println("Número de argumentos inválido.");
             System.out.println("Utilización: Apartado5 training.txt test.txt");
@@ -29,6 +26,7 @@ public class Apartado5 {
 
         //Recomendador vecinos
         System.out.println("\nPrecision del recomendador de vecinos:");
+        
         double numUsuarios = 0;
         double total = 0;
 

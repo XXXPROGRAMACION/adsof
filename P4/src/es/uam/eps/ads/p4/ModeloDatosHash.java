@@ -21,7 +21,6 @@ public class ModeloDatosHash implements ModeloDatos {
             while ((linea = buffer.readLine()) != null) {
                 String[] info = linea.split("\\s+");
                 if (info.length != 4) {
-                    buffer.close();
                     throw new IOException();
                 }
 
@@ -47,21 +46,20 @@ public class ModeloDatosHash implements ModeloDatos {
             }
 
             lecturaCorrecta = true;
-            buffer.close();
-        } catch (IOException e) {
-            System.out.println("Error leyendo preferencias.");
         } catch (NumberFormatException e) {
             System.out.println("Error en el formato de un número.");
+        } catch (IOException e) {
+            System.out.println("Error leyendo preferencias.");
         }
     }
 
     public Map<Long, Double> getPreferenciasUsuario(Long usuario) {
-        if (usuarios.get(usuario) == null) return null;
+        if (usuarios.get(usuario) == null) return new HashMap<>();
         return Collections.unmodifiableMap(usuarios.get(usuario));
     }
 
     public Map<Long, Double> getPreferenciasItem(Long item) {
-        if (items.get(item) == null) return null;
+        if (items.get(item) == null) return new HashMap<>();
         return Collections.unmodifiableMap(items.get(item));
     }
 

@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 
-public class MetricaRecall implements Metrica {
+public class MetricaRecall extends MetricaDeFichero {
     ModeloDatos modeloDatos;
     double notaMinima;
 
@@ -20,8 +20,10 @@ public class MetricaRecall implements Metrica {
         List<Tupla> recomendaciones = rec.getRecomendaciones();
         for (int i = 0; i < n; i++) {
             itemsRecomendados.add(recomendaciones.get(i).id);
-        }        
+        }
+
         Set<Long> itemsRelevantes = getItemsRelevantes(rec.getUsuario());
+        if (itemsRelevantes.size() == 0) throw new UsuarioNoRelevante();
 
         int comunes = 0;
 
@@ -37,6 +39,7 @@ public class MetricaRecall implements Metrica {
         Set<Long> itemsRelevantes = new HashSet<>();
 
         Map<Long, Double> preferencias = modeloDatos.getPreferenciasUsuario(u);
+        //System.out.println(u + " - " + preferencias.size());
         for (long i : preferencias.keySet()) {
             if (preferencias.get(i) >= notaMinima) {
                 itemsRelevantes.add(i);

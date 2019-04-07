@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class RecomendadorPopularidad implements Recomendador {
+public class RecomendadorPopularidad extends RecomendadorSerializable {
     private List<Tupla> items;
 
     public RecomendadorPopularidad(ModeloDatos modeloDatos) {

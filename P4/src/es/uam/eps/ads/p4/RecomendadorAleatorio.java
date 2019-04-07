@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class RecomendadorAleatorio implements Recomendador {
+public class RecomendadorAleatorio extends RecomendadorSerializable {
     ModeloDatos modeloDatos;
     Random random;
 
