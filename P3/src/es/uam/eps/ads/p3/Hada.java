@@ -1,6 +1,11 @@
 package es.uam.eps.ads.p3;
 
-
+/**
+ * <p>Esta clase permite trabajar con hadas.</p>
+ * 
+ * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
+ *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
+ */
 public class Hada extends Mago {
 
     /**

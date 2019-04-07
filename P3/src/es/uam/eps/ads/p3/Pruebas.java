@@ -75,13 +75,8 @@ public class Pruebas {
 
         System.out.println("\t" + explorador1);
 
-        if (explorador1.recorre(posada2, posada3, posada4, posada5, posada6)) {
-            System.out.println("\tSe ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        } else {
-            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        }
+        intentaRecorrer(explorador1, posada2, posada3, posada4, posada5, 
+                        posada6);
 
         System.out.println("\t" + explorador1);
     }
@@ -106,13 +101,8 @@ public class Pruebas {
 
         System.out.println("\t" + explorador1);
 
-        if (explorador1.recorre(posada2, posada3, posada4, posada5, posada6)) {
-            System.out.println("\tSe ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        } else {
-            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        }
+        intentaRecorrer(explorador1, posada2, posada3, posada4, posada5, 
+                        posada6);
 
         System.out.println("\t" + explorador1);
     }
@@ -123,6 +113,18 @@ public class Pruebas {
             System.out.println("\tPuede ir a " + posada.getNombre());
         } else {
             System.out.println("\tNo puede ir a " + posada.getNombre());
+        }
+    }
+
+    // Función auxiliar para imprimir si se puede recorrer una serie de posadas
+    private static void intentaRecorrer(Explorador explorador, 
+                                         Posada ... posadas) {
+        if (explorador.recorre(posadas)) {
+            System.out.println("\tSe ha podido recorrer toda la secuencia de"
+                                + " posadas");
+        } else {
+            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
+                                + " posadas");
         }
     }
 }

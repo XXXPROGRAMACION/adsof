@@ -6,8 +6,7 @@ package es.uam.eps.ads.p3;
  * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
-public class Explorador {
-    
+public class Explorador {    
     private String nombre;
     private int energia;
     private Posada posadaActual;

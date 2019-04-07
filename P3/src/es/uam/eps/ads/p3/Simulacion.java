@@ -12,7 +12,6 @@ import java.util.Objects;
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
 public class Simulacion {
-
     List<Posada> posadas = new ArrayList<>();
     List<Explorador> exploradores = new ArrayList<>();
     Explorador exploradorActual;

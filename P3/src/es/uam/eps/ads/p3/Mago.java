@@ -6,8 +6,7 @@ package es.uam.eps.ads.p3;
  * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
-public abstract class Mago extends Explorador {
-    
+public abstract class Mago extends Explorador {    
     private int poder;
 
     /**

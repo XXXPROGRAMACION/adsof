@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author <p>Alejandro Pascual (alejandro.pascualp@estudiante.uam.es)<br>
  *         Víctor Yrazusta (victor.yrazusta@estudiante.uam.es)</p>
  */
-public class Posada {
+public class Posada {    
     private String nombre;
     private int energiaRecuperada;
     private List<Camino> caminos = new ArrayList<>();
@@ -136,7 +136,7 @@ public class Posada {
      * Devuelve el numero de caminos que parten de la posada.
      * @return El numero de caminos que parten de la posada
      */
-    public int getNumeroCaminos() {
+    public int getNumCaminos() {
         return caminos.size();
     }
 

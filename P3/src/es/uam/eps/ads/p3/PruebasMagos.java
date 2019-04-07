@@ -22,16 +22,16 @@ public class PruebasMagos {
         posada1.addCamino(new Camino(posada1, posada2, 20));
         posada2.addCamino(new Camino(posada2, posada3, 20));      
 
-        Explorador explorador1 = new Hada("Hada 1", 30, posada1, 8);
-        System.out.println("\t" + explorador1);
+        Explorador hada1 = new Hada("Hada 1", 30, posada1, 8);
+        System.out.println("\t" + hada1);
 
-        intentaRecorrer(explorador1, posada2);
+        intentaRecorrer(hada1, posada2);
         
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hada1);
 
-        intentaRecorrer(explorador1, posada3);
+        intentaRecorrer(hada1, posada3);
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hada1);
     }
 
     // El explorador es capaz de moverse a la primera posada, pero no a la 
@@ -44,16 +44,16 @@ public class PruebasMagos {
         posada1.addCamino(new Camino(posada1, posada2, 20));
         posada2.addCamino(new Camino(posada2, posada3, 20));      
 
-        Explorador explorador1 = new Hechicero("Hechicero 1", 30, posada1, 2);
-        System.out.println("\t" + explorador1);
+        Explorador hechicero1 = new Hechicero("Hechicero 1", 30, posada1, 2);
+        System.out.println("\t" + hechicero1);
 
-        intentaRecorrer(explorador1, posada2);
+        intentaRecorrer(hechicero1, posada2);
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hechicero1);
 
-        intentaRecorrer(explorador1, posada3);
+        intentaRecorrer(hechicero1, posada3);
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hechicero1);
     }
 
     // El explorador es capaz de recorrer toda la secuencia de posadas.
@@ -65,7 +65,7 @@ public class PruebasMagos {
         Posada posada5 = new Posada("Posada 5", 10, Luz.CLARA);
         Posada posada6 = new Posada("Posada 6", 0, Luz.CLARA);
 
-        Explorador explorador1 = new Hada("Hada 1", 10, posada1, 10);
+        Explorador hada1 = new Hada("Hada 1", 10, posada1, 10);
 
         posada1.addCamino(new Camino(posada1, posada2, 10));
         posada2.addCamino(new Camino(posada2, posada3, 10));
@@ -73,17 +73,11 @@ public class PruebasMagos {
         posada4.addCamino(new Camino(posada4, posada5, 10));
         posada5.addCamino(new Camino(posada5, posada6, 10));
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hada1);
 
-        if (explorador1.recorre(posada2, posada3, posada4, posada5, posada6)) {
-            System.out.println("\tSe ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        } else {
-            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        }
+        intentaRecorrer(hada1, posada2, posada3, posada4, posada5, posada6);
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hada1);
     }
 
     // El explorador es capaz de recorrer parte de la secuencia de posadas.
@@ -95,7 +89,7 @@ public class PruebasMagos {
         Posada posada5 = new Posada("Posada 5", 10, Luz.DIVINA);
         Posada posada6 = new Posada("Posada 6", 10, Luz.GRIS);
 
-        Explorador explorador1 = new Hechicero("Hechicero 1", 10, posada1, 2);
+        Explorador hechicero1 = new Hechicero("Hechicero 1", 10, posada1, 2);
 
         posada1.addCamino(new Camino(posada1, posada2, 10));
         posada2.addCamino(new Camino(posada2, posada3, 200));
@@ -104,17 +98,11 @@ public class PruebasMagos {
         posada4.addCamino(new Camino(posada4, posada5, 200));
         posada5.addCamino(new Camino(posada5, posada6, 10));
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hechicero1);
 
-        if (explorador1.recorre(posada2, posada3, posada4, posada5, posada6)) {
-            System.out.println("\tSe ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        } else {
-            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
-                               + " posadas");
-        }
+        intentaRecorrer(hechicero1, posada2, posada3, posada4, posada5, posada6);
 
-        System.out.println("\t" + explorador1);
+        System.out.println("\t" + hechicero1);
     }
 
     // Función auxiliar para imprimir si se puede ir a una posada o no.
@@ -123,6 +111,18 @@ public class PruebasMagos {
             System.out.println("\tPuede ir a " + posada.getNombre());
         } else {
             System.out.println("\tNo puede ir a " + posada.getNombre());
+        }
+    }
+
+    // Función auxiliar para imprimir si se puede recorrer una serie de posadas
+    private static void intentaRecorrer(Explorador explorador, 
+                                         Posada ... posadas) {
+        if (explorador.recorre(posadas)) {
+            System.out.println("\tSe ha podido recorrer toda la secuencia de"
+                                + " posadas");
+        } else {
+            System.out.println("\tNo se ha podido recorrer toda la secuencia de"
+                                + " posadas");
         }
     }
 }

@@ -31,6 +31,7 @@ public enum Luz {
 
     /**
      * Devuelve el elemento correspondiente de la enumeración dado su valor.
+     * @param nivelLuz Nivel de luz
      * @return Elemento correspondiente de la enumeración dado su valor
      */
     public static Luz getLuz(int nivelLuz) {
