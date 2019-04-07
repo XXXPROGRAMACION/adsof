@@ -9,6 +9,10 @@ public class Apartado5 {
     public static final int numVecinos = 100;
     public static final int tamRecomendacion = 5;
 
+    /**
+     * Ejecución del programa de prueba del apartado 5.
+     * @param args Argumentos con las rutas de los ficheros a utilizar
+     */
     public static void main(String[] args) {
         if (args.length != 2) {
             System.out.println("Número de argumentos inválido.");

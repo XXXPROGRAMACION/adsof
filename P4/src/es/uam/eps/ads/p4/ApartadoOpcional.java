@@ -12,6 +12,10 @@ public class ApartadoOpcional {
     public static final int tamRecomendacion = 5;
     public static final String ruta = "recomendacionesVecinos.txt";
 
+    /**
+     * Ejecución del programa de prueba del apartado opcional.
+     * @param args Argumentos con las rutas de los ficheros a utilizar
+     */
     public static void main(String[] args) {
         if (args.length != 3) {
             System.out.println("Número de argumentos inválido.");

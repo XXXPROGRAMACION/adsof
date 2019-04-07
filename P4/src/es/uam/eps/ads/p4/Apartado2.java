@@ -4,9 +4,12 @@ package es.uam.eps.ads.p4;
  * Permite comprobar el correcto funcionamiento del modelo de datos y el
  * recomendador de vecinos.
  */
-public class Prueba {
+public class Apartado2 {
 
-    public static void main(String[] args) {
+    /**
+     * Ejecución del programa de prueba del apartado 2.
+     */
+    public static void main() {
         ModeloDatos modeloDatos = new ModeloDatosHash();
         modeloDatos.leeFicheroPreferencias("PruebaTraining.txt");
         RecomendadorVecinos recomendadorVecinos = 
