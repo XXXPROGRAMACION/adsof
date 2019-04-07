@@ -29,7 +29,6 @@ public class RecomendadorVecinos implements Recomendador, Similitud {
             List<Tupla> similitudes = new ArrayList<>();
             for (long v : modeloDatos.getUsuariosUnicos()) {
                 if (u == v) continue;
-
                 similitudes.add(new Tupla(v, sim(u, v)));
             }
             Collections.sort(similitudes);
@@ -46,7 +45,7 @@ public class RecomendadorVecinos implements Recomendador, Similitud {
             if (preferenciasU.containsKey(o)) continue;
             double puntuacionTotal = 0;
             for (Tupla t : similitudes) {
-                System.out.println("Recomendacion: " + t);
+                //System.out.println("Recomendacion: " + t);
                 Map<Long, Double> preferenciasV =
                         modeloDatos.getPreferenciasUsuario(t.id);
                 Double valoracion = preferenciasV.get(o);

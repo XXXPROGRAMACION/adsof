@@ -20,17 +20,20 @@ public class MetricaPrecision implements Metrica {
         List<Tupla> recomendaciones = rec.getRecomendaciones();
         for (int i = 0; i < n; i++) {
             itemsRecomendados.add(recomendaciones.get(i).id);
-        }        
+        }
+
         Set<Long> itemsRelevantes = getItemsRelevantes(rec.getUsuario());
 
-        if (itemsRelevantes.isEmpty()) {
+        if (itemsRelevantes == null) {
             throw new UsuarioNoRelevante();
         }
 
         int comunes = 0;
 
         for (long i : itemsRecomendados) {
-            if (itemsRelevantes.contains(i)) comunes++;
+            if (itemsRelevantes.contains(i)) {
+                comunes++;
+            }
         }
 
         return (double) comunes/n;
