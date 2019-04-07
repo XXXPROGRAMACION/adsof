@@ -2,6 +2,9 @@ package es.uam.eps.ads.p4;
 
 import java.util.Objects;
 
+/**
+ * Implementación del apartado opcional.
+ */
 public class ApartadoOpcional {
     public static final int notaMinima = 2;
     public static final int k = 5;
