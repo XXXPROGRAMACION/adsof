@@ -15,12 +15,18 @@ public class Apartado5 {
 
         ModeloDatos modeloDatosTraining = new ModeloDatosHash();
         modeloDatosTraining.leeFicheroPreferencias(args[0]);
+        if (!modeloDatosTraining.getCorrecto()) {
+            System.out.println("Error leyendo el fichero de entrenamiento.");
+        }
         Recomendador recomendadorVecinos = new RecomendadorVecinos(modeloDatosTraining, numVecinos);
         Recomendador recomendadorAleatorio = new RecomendadorAleatorio(modeloDatosTraining);
         Recomendador recomendadorPopularidad = new RecomendadorPopularidad(modeloDatosTraining);
 
         ModeloDatos modeloDatosTest = new ModeloDatosHash();
         modeloDatosTest.leeFicheroPreferencias(args[1]);
+        if (!modeloDatosTest.getCorrecto()) {
+            System.out.println("Error leyendo el fichero de testeo.");
+        }
         Metrica metricaPrecision = new MetricaPrecision(modeloDatosTest, notaMinima);
         Metrica metricaRecall = new MetricaRecall(modeloDatosTest, notaMinima);
 

@@ -7,18 +7,39 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.List;
 
+/**
+ * Esta clase extiende la clase recomendador serializable. Define el
+ * funcionamiento de un recomendador por sistema de vecinos.
+ */
 public class RecomendadorVecinos extends RecomendadorSerializable 
                                  implements Similitud {
     private ModeloDatos modeloDatos;
     private final int k;
     private Map<Long, List<Tupla>> relaciones = new HashMap<>();
 
+    /**
+     * Instacia un recomendador por vecinos dadas sus características.
+     * @param modeloDatos Modelo de datos del recomendador
+     * @param k Número de usuarios que se utilizaran como vecinos para el 
+     *          cálculo de la recomendación del usuario
+     */
     public RecomendadorVecinos(ModeloDatos modeloDatos, int k) {
         this.modeloDatos = modeloDatos;
         if (k > 0) this.k = k;
         else this.k = 5;
     }
 
+    /**
+     * Recomienda items para el usuario indicado hasta el máximo especificado.
+     * Sus recomendaciones se basan en los usuarios que se consideran sus
+     * "vecinos". Por lo tanto el proceso se divide en dos partes: calcular los
+     * vecinos del usuario y generar la recomendación del tamaño indicado.
+     * La primera parte de este proceso, al ser constante, la calculamos solo
+     * la primera vez que se pide una recomendación de dicho usuario.
+     * @param u Usuario para el que se debe realizar la recomendación
+     * @param longitudRecomendacion Tamaño máximo de la recomendación
+     * @return Recomendación generada para el usuario indicado.
+     */
     @Override
     public Recomendacion recomienda(long u, int longitudRecomendacion)
     throws RecomendacionInvalida {
@@ -62,6 +83,15 @@ public class RecomendadorVecinos extends RecomendadorSerializable
         return new Recomendacion(u, items);        
     }
 
+    /**
+     * Determina el grado de similitud entre dos usuarios, para poder encontrar 
+     * a los "vecinos" de cada usuario. Este valor se calcula en base a la 
+     * similitud de sus respectivas preferencias, creciendo cuando ambos valoran
+     * un mismo objeto con calificaciones cercanas.
+     * @param u1 Primer usuario para el que calcular la similitud
+     * @param u2 Segundo usuario para el que calcular la similitud
+     * @return Grado de similitud entre los dos usuarios.
+     */
     @Override
     public double sim(long u1, long u2) {
         if (!modeloDatos.getCorrecto()) return -1;

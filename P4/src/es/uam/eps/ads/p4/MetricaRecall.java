@@ -39,7 +39,6 @@ public class MetricaRecall extends MetricaDeFichero {
         Set<Long> itemsRelevantes = new HashSet<>();
 
         Map<Long, Double> preferencias = modeloDatos.getPreferenciasUsuario(u);
-        //System.out.println(u + " - " + preferencias.size());
         for (long i : preferencias.keySet()) {
             if (preferencias.get(i) >= notaMinima) {
                 itemsRelevantes.add(i);

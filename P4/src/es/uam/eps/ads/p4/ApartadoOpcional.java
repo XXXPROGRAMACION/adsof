@@ -20,8 +20,12 @@ public class ApartadoOpcional {
         if (Objects.equals(args[2], "s")) {
             ModeloDatos modeloDatosTraining = new ModeloDatosHash();
             modeloDatosTraining.leeFicheroPreferencias(args[0]);
+            if (!modeloDatosTraining.getCorrecto()) {
+                System.out.println("Error leyendo el fichero de " + 
+                                   "entrenamiento.");
+            }
             Recomendador recomendadorVecinos = 
-                        new RecomendadorVecinos(modeloDatosTraining, numVecinos);
+                       new RecomendadorVecinos(modeloDatosTraining, numVecinos);
 
             // Calculo de recomendaciones
             recomendadorVecinos.crearFicheroRecomendaciones(ruta, 
@@ -31,6 +35,9 @@ public class ApartadoOpcional {
 
         ModeloDatos modeloDatosTest = new ModeloDatosHash();
         modeloDatosTest.leeFicheroPreferencias(args[1]);
+        if (!modeloDatosTest.getCorrecto()) {
+            System.out.println("Error leyendo el fichero de testeo.");
+        }
         Metrica metricaPrecision = new MetricaPrecision(modeloDatosTest,
                                                         notaMinima);
         Metrica metricaRecall = new MetricaRecall(modeloDatosTest, notaMinima);
