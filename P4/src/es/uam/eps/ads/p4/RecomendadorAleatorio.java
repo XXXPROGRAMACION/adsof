@@ -12,8 +12,8 @@ import java.util.Random;
  * funcionamiento de un recomendador aleatorio.
  */
 public class RecomendadorAleatorio extends RecomendadorSerializable {
-    ModeloDatos modeloDatos;
-    Random random;
+    private ModeloDatos modeloDatos;
+    private Random random;
 
     /**
      * Instancia un recomendador aleatorio dado su modelo de datos.
