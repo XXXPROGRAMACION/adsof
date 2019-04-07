@@ -23,6 +23,10 @@ public class MetricaPrecision implements Metrica {
         }        
         Set<Long> itemsRelevantes = getItemsRelevantes(rec.getUsuario());
 
+        if (itemsRelevantes.isEmpty()) {
+            throw new UsuarioNoRelevante();
+        }
+
         int comunes = 0;
 
         for (long i : itemsRecomendados) {
