@@ -1,5 +1,9 @@
 package es.uam.eps.ads.p4;
 
+/**
+ * Permite comprobar el correcto funcionamiento del modelo de datos y el
+ * recomendador de vecinos.
+ */
 public class Prueba {
 
     public static void main(String[] args) {
