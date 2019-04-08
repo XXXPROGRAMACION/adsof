@@ -8,6 +8,13 @@ public class IMatrixElementC<T> implements IMatrixElement<T> {
     public IMatrixElementC(int i, int j) {
         this.i = i;
         this.j = j;
+        element = null;
+    }
+
+    public IMatrixElementC(int i, int j, T element) {
+        this.i = i;
+        this.j = j;
+        this.element = element;
     }
 
     @Override
