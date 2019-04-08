@@ -6,7 +6,7 @@ public interface IMatrix<T> {
     int getCols();
     int getRows();
     boolean isLegalPosition(int i, int j);
-    void addElement(IMatrizElement<T> element) 
+    void addElement(IMatrixElement<T> element) 
         throws IllegalPositionException;
     IMatrixElement<T> getElementAt(int i, int j) 
         throws IllegalPositionException;
