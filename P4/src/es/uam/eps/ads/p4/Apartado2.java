@@ -9,7 +9,7 @@ public class Apartado2 {
     /**
      * Ejecución del programa de prueba del apartado 2.
      */
-    public static void main() {
+    public static void main(String[] args) {
         ModeloDatos modeloDatos = new ModeloDatosHash();
         modeloDatos.leeFicheroPreferencias("PruebaTraining.txt");
         RecomendadorVecinos recomendadorVecinos = 
