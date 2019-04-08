@@ -43,15 +43,11 @@ public class SparseMatrix<T> implements IMatrix<T> {
 
         if (row == null) {
             row = new TreeMap<>();
+            rows.put(element.getI(), row);
         }
 
         IMatrixElement<T> e = row.get(element.getJ());
-        if (e != null) {
-            e.setElement(element.getElement());
-        } else {
-            e = new IMatrixElementC<>(element.getI(), element.getJ());
-            row.put(element.getJ(), e);
-        }
+        row.put(element.getJ(), element);
     }
 
     @Override
