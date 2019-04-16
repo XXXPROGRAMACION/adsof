@@ -125,4 +125,22 @@ public class SparseMatrix<T> implements IMatrix<T> {
         
         return list;
     }
+
+    public List<IMatrixElement<T>> asListSortedBy(Comparator<IMatrixElement<T>> c) {
+        return asList().sort(c);
+    }
+
+    @Override
+    static boolean equals(IMatrix<?> matrix1, IMatrix<?> matrix2) {
+        return matrix1.asList().equals(matrix2.asList());
+    }
+
+    @Override
+    public int hashCode() {
+    // Basado en la función de N^2->N de Cantor. 
+    // https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function
+        return (numberOfColumns*numberOfColumns+3*numberOfColumns
+                +2*numberOfColumns*numberOfRows+numberOfRows
+                +numberOfRows*numberOfRows)/2;
+    }
 }

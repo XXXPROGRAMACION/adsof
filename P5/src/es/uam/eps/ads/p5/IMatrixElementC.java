@@ -48,6 +48,8 @@ public class IMatrixElementC<T> implements IMatrixElement<T> {
 
     @Override
     public boolean equals(Object obj) {
-        return element.equals(obj);
+       if (!(obj instanceof IMatrixElement)) return false;
+       IMatrixElementC<T> e = (IMatrixElementC<T>) obj;
+       return (i == e.i) && (j == e.j) && (element.equals(e.element));
     }
 }

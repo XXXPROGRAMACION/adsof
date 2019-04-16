@@ -13,4 +13,5 @@ public interface IMatrix<T> {
     List<IMatrixElement<T>> getNeighboursAt(int i, int j)
         throws IllegalPositionException;
     List<IMatrixElement<T>> asList();
+    List<IMatrixElement<T>> asListSortedBy(Comparator<IMatrixElement<T>> c);
 }
