@@ -1,0 +1,109 @@
+package es.uam.eps.ads.p5;
+
+public class Apartado2 {
+
+    public static void main(String[] args) {
+        Test1();
+        Test2();
+        Test3();
+    }
+
+    public static void Test1() {
+        try {
+            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+
+            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+
+            matrix1.addElement(e1);
+            matrix1.addElement(e2);
+            matrix1.addElement(e3);
+            matrix1.addElement(e4);
+            matrix1.addElement(e5);
+            
+            matrix2.addElement(e1);
+            matrix2.addElement(e2);
+            matrix2.addElement(e3);
+            matrix2.addElement(e4);
+
+            if (matrix1.equals(matrix2)) {
+                System.out.println("Test 1 fallido, las matrices deberían de ser" + 
+                                " diferentes\n" + matrix1 + "\n" + matrix2);
+            } else {
+                System.out.println("Test 1 correcto, las matrices son diferentes");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void Test2() {
+        try {
+            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+
+            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+
+            matrix1.addElement(e1);
+            matrix1.addElement(e2);
+            matrix1.addElement(e3);
+            matrix1.addElement(e4);
+            matrix1.addElement(e5);
+            
+            matrix2.addElement(e1);
+            matrix2.addElement(e2);
+            matrix2.addElement(e3);
+            matrix2.addElement(e4);
+            matrix2.addElement(e5);
+
+            if (!matrix1.equals(matrix2)) {
+                System.out.println("Test 2 fallido, las matrices deberían de ser" + 
+                                " iguales\n" + matrix1 + "\n" + matrix2);
+            } else {
+                System.out.println("Test 2 correcto, las matrices son iguales");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void Test3() {
+        try {
+            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+
+            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+
+            matrix1.addElement(e1);
+            matrix1.addElement(e3);
+            matrix1.addElement(e4);
+            matrix1.addElement(e5);
+            
+            matrix2.addElement(e2);
+            matrix2.addElement(e3);
+            matrix2.addElement(e4);
+            matrix2.addElement(e5);
+
+            if (matrix1.equals(matrix2)) {
+                System.out.println("Test 3 fallido, las matrices deberían de ser" + 
+                                " diferentes\n" + matrix1 + "\n" + matrix2);
+            } else {
+                System.out.println("Test 3 correcto, las matrices son diferentes");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

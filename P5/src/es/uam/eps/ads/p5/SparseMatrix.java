@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class SparseMatrix<T> implements IMatrix<T> {
     private final int numberOfColumns;
@@ -127,20 +128,30 @@ public class SparseMatrix<T> implements IMatrix<T> {
     }
 
     public List<IMatrixElement<T>> asListSortedBy(Comparator<IMatrixElement<T>> c) {
-        return asList().sort(c);
+        List<IMatrixElement<T>> list = asList();
+        list.sort(c);
+        return list;
     }
 
     @Override
-    static boolean equals(IMatrix<?> matrix1, IMatrix<?> matrix2) {
-        return matrix1.asList().equals(matrix2.asList());
+    public boolean equals(Object a) {
+        if (!(a instanceof IMatrix)) return false;
+        return asList().equals(((IMatrix) a).asList());
     }
 
     @Override
     public int hashCode() {
-    // Basado en la función de N^2->N de Cantor. 
+    // Basado en la función de N^2->N de Cantor y en el libro "Effective Java"
+    // de Joshua Bloch.
     // https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function
-        return (numberOfColumns*numberOfColumns+3*numberOfColumns
-                +2*numberOfColumns*numberOfRows+numberOfRows
-                +numberOfRows*numberOfRows)/2;
+        int hash =  (numberOfColumns*numberOfColumns+3*numberOfColumns
+                    +2*numberOfColumns*numberOfRows+numberOfRows
+                    +numberOfRows*numberOfRows)/2;
+        
+        for (int i : rows.keySet()) {
+            hash += i*31;
+        }
+
+        return hash;
     }
 }

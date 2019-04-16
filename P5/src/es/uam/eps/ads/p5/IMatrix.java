@@ -1,6 +1,7 @@
 package es.uam.eps.ads.p5;
 
 import java.util.List;
+import java.util.Comparator;
 
 public interface IMatrix<T> {
     int getCols();
