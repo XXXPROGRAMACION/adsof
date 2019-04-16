@@ -1,11 +1,25 @@
 package es.uam.eps.ads.p5;
 
+import java.util.Random;
 public class Apartado2 {
 
     public static void main(String[] args) {
         Test1();
         Test2();
         Test3();
+
+        IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
+        Random r = new Random();
+        try {
+            for (int i = 0; i < 10; i++) {
+                matrix1.addElement(new IMatrixElementC(r.nextInt(9)+1, r.nextInt(9)+1, r.nextInt(100)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+
+        Test4(matrix1);
+        Test5(matrix1);
     }
 
     public static void Test1() {
@@ -102,6 +116,24 @@ public class Apartado2 {
             } else {
                 System.out.println("Test 3 correcto, las matrices son diferentes");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void Test4(IMatrix<Integer> matrix1) {
+        try {
+            System.out.println("Lista de la matriz ordenada por fila: \n" + 
+                        matrix1.asListSortedBy(new RowComparator()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void Test5(IMatrix<Integer> matrix1) {
+        try {
+            System.out.println("Lista de la matriz ordenada por columna: \n" + 
+                        matrix1.asListSortedBy(new ColComparator()));
         } catch (Exception e) {
             e.printStackTrace();
         }
