@@ -6,7 +6,7 @@ public class Apartado1 {
 
     public static void main(String[] args) {
         try {
-            IMatrix<Integer> intMatrix = new SparseMatrix<>(6, 7);
+            IMatrix<Integer> intMatrix = new Matrix<>(6, 7);
 
             System.out.println("Matriz de enteros:");
 
@@ -16,24 +16,24 @@ public class Apartado1 {
                                 + intMatrix.getCols());
 
             if (intMatrix.isLegalPosition(0, 0)) {
-                System.out.println(" -> ¿Posición interna accesible? Sí");
+                System.out.println(" -> Posicion interna accesible? Si");
             } else {
-                System.out.println(" -> ¿Posición interna accesible? No");
+                System.out.println(" -> Posicion interna accesible? No");
             }
 
             if (intMatrix.isLegalPosition(100, 100)) {
-                System.out.println(" -> ¿Posición externa accesible? Sí");
+                System.out.println(" -> Posicion externa accesible? Si");
             } else {
-                System.out.println(" -> ¿Posición externa accesible? No");
+                System.out.println(" -> Posicion externa accesible? No");
             }
 
-            System.out.println(" -> Se añade '1' a la posición (1, 1)");
+            System.out.println(" -> Se anade '1' a la posicion (1, 1)");
             intMatrix.addElement(new MatrixElement<>(1, 1, 1));
-            System.out.println(" -> Se añade '2' a la posición (0, 1)");
+            System.out.println(" -> Se anade '2' a la posicion (0, 1)");
             intMatrix.addElement(new MatrixElement<>(0, 1, 2));
-            System.out.println(" -> Se añade '3' a la posición (1, 0)");
+            System.out.println(" -> Se anade '3' a la posicion (1, 0)");
             intMatrix.addElement(new MatrixElement<>(1, 0, 3));
-            System.out.println(" -> Se añade '4' a la posición (1, 2)");
+            System.out.println(" -> Se anade '4' a la posicion (1, 2)");
             intMatrix.addElement(new MatrixElement<>(1, 2, 4));
             
             int v = intMatrix.getElementAt(1, 1).getElement();
@@ -53,7 +53,7 @@ public class Apartado1 {
                 System.out.println(" ---> " + v);
             }
 
-            IMatrix<String> strMatrix = new SparseMatrix<>(4, 8);
+            IMatrix<String> strMatrix = new Matrix<>(4, 8);
 
             System.out.println("\nMatriz de strings:");
 
@@ -63,24 +63,24 @@ public class Apartado1 {
                                 + strMatrix.getCols());
 
             if (strMatrix.isLegalPosition(0, 0)) {
-                System.out.println(" -> ¿Posición interna accesible? Sí");
+                System.out.println(" -> Posicion interna accesible? Si");
             } else {
-                System.out.println(" -> ¿Posición interna accesible? No");
+                System.out.println(" -> Posicion interna accesible? No");
             }
 
             if (strMatrix.isLegalPosition(100, 100)) {
-                System.out.println(" -> ¿Posición externa accesible? Sí");
+                System.out.println(" -> Posicion externa accesible? Si");
             } else {
-                System.out.println(" -> ¿Posición externa accesible? No");
+                System.out.println(" -> Posicion externa accesible? No");
             }
 
-            System.out.println(" -> Se añade 'String 1' a la posición (1, 1)");
+            System.out.println(" -> Se anade 'String 1' a la posicion (1, 1)");
             strMatrix.addElement(new MatrixElement<>(1, 1, "String 1"));
-            System.out.println(" -> Se añade 'String 2' a la posición (0, 1)");
+            System.out.println(" -> Se anade 'String 2' a la posicion (0, 1)");
             strMatrix.addElement(new MatrixElement<>(0, 1, "String 2"));
-            System.out.println(" -> Se añade 'String 3' a la posición (1, 0)");
+            System.out.println(" -> Se anade 'String 3' a la posicion (1, 0)");
             strMatrix.addElement(new MatrixElement<>(1, 0, "String 3"));
-            System.out.println(" -> Se añade 'String 4' a la posición (1, 2)");
+            System.out.println(" -> Se anade 'String 4' a la posicion (1, 2)");
             strMatrix.addElement(new MatrixElement<>(1, 2, "String 4"));
             
             String s = strMatrix.getElementAt(1, 1).getElement();

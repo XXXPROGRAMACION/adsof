@@ -6,45 +6,45 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SparseMatrix<T> implements IMatrix<T> {
-    private final int numberOfColumns;
-    private final int numberOfRows;
-    private Map<Integer, Map<Integer, IMatrixElement<T>>> rows;
+public class Matrix<T> implements IMatrix<T> {
+    private final int columns;
+    private final int rows;
+    private Map<Integer, Map<Integer, IMatrixElement<T>>> rowsMap;
 
-    public SparseMatrix(int numberOfColumns, int numberOfRows) {
-        this.numberOfColumns = numberOfColumns;
-        this.numberOfRows = numberOfRows;
-        rows = new TreeMap<>();
+    public Matrix(int columns, int rows) {
+        this.columns = columns;
+        this.rows = rows;
+        rowsMap = new TreeMap<>();
     }
 
     @Override
     public int getCols() {
-        return numberOfColumns;
+        return columns;
     }
 
     @Override
     public int  getRows() {
-        return numberOfRows;
+        return rows;
     }
 
     @Override
     public boolean isLegalPosition(int i, int j) {
-        return i < numberOfRows && i >= 0 &&
-               j < numberOfColumns && j >= 0;
+        return i < rows && i >= 0 &&
+               j < columns && j >= 0;
     }
 
     @Override
     public void addElement(IMatrixElement<T> element) 
-        throws IllegalPositionException {
+    throws IllegalPositionException {
         if (!isLegalPosition(element.getI(), element.getJ())) {
             throw new IllegalPositionException();
         }
 
-        Map<Integer,IMatrixElement<T>> row = rows.get(element.getI());
+        Map<Integer, IMatrixElement<T>> row = rowsMap.get(element.getI());
 
         if (row == null) {
             row = new TreeMap<>();
-            rows.put(element.getI(), row);
+            rowsMap.put(element.getI(), row);
         }
 
         row.put(element.getJ(), element);
@@ -52,20 +52,33 @@ public class SparseMatrix<T> implements IMatrix<T> {
 
     @Override
     public IMatrixElement<T> getElementAt(int i, int j) 
-        throws IllegalPositionException {
+    throws IllegalPositionException {
         if (!isLegalPosition(i, j)) {
             throw new IllegalPositionException();
         }
 
-        Map<Integer, IMatrixElement<T>> row = rows.get(i);
+        Map<Integer, IMatrixElement<T>> row = rowsMap.get(i);
         if (row == null) return null;
 
         return row.get(j);
     }
 
     @Override
+    public boolean checkElementAt(int i, int j)
+    throws IllegalPositionException {
+        if (!isLegalPosition(i, j)) {
+            throw new IllegalPositionException();
+        }
+
+        Map<Integer, IMatrixElement<T>> row = rowsMap.get(i);
+        if (row == null) return false;
+
+        return row.containsKey(j);
+    }
+
+    @Override
     public List<IMatrixElement<T>> getNeighboursAt(int i, int j)
-        throws IllegalPositionException {
+    throws IllegalPositionException {
         if (!isLegalPosition(i, j)) {
             throw new IllegalPositionException();
         }
@@ -76,7 +89,7 @@ public class SparseMatrix<T> implements IMatrix<T> {
 
         // Obtenemos el vecino superior
         if (isLegalPosition(i-1, j)) {
-            row = rows.get(i-1);
+            row = rowsMap.get(i-1);
             if (row != null) {
                 e = row.get(j);
                 if (e != null) {
@@ -86,7 +99,7 @@ public class SparseMatrix<T> implements IMatrix<T> {
         }
 
         // Obtenemos los vecinos de la misma fila
-        row = rows.get(i);
+        row = rowsMap.get(i);
         if (row != null) {
             if (isLegalPosition(i, j-1)) {
                 e = row.get(j-1);
@@ -104,7 +117,7 @@ public class SparseMatrix<T> implements IMatrix<T> {
 
         // Obtenemos el vecino inferior
         if (isLegalPosition(i+1, j)) {
-            row = rows.get(i+1);
+            row = rowsMap.get(i+1);
             if (row != null) {
                 e = row.get(j);
                 if (e != null) {
@@ -119,7 +132,7 @@ public class SparseMatrix<T> implements IMatrix<T> {
     public List<IMatrixElement<T>> asList() {
         List<IMatrixElement<T>> list = new ArrayList<>();
 
-        for (Map<Integer, IMatrixElement<T>> row: rows.values()) {
+        for (Map<Integer, IMatrixElement<T>> row: rowsMap.values()) {
             list.addAll(row.values());
         }
         
@@ -143,11 +156,11 @@ public class SparseMatrix<T> implements IMatrix<T> {
     // Basado en la función de N^2->N de Cantor y en el libro "Effective Java"
     // de Joshua Bloch.
     // https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function
-        int hash =  (numberOfColumns*numberOfColumns+3*numberOfColumns
-                    +2*numberOfColumns*numberOfRows+numberOfRows
-                    +numberOfRows*numberOfRows)/2;
+        int hash =  (columns*columns+3*columns
+                    +2*columns*rows+rows
+                    +rows*rows)/2;
         
-        for (int i : rows.keySet()) {
+        for (int i : rowsMap.keySet()) {
             hash += i*31;
         }
 

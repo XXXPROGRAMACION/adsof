@@ -8,7 +8,7 @@ public class Apartado2 {
         Test2();
         Test3();
 
-        IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
+        IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
         Random r = new Random();
         try {
             for (int i = 0; i < 10; i++) {
@@ -24,8 +24,8 @@ public class Apartado2 {
 
     public static void Test1() {
         try {
-            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -45,7 +45,7 @@ public class Apartado2 {
             matrix2.addElement(e4);
 
             if (matrix1.equals(matrix2)) {
-                System.out.println("Test 1 fallido, las matrices deberían de ser" + 
+                System.out.println("Test 1 fallido, las matrices deberian de ser" + 
                                 " diferentes\n" + matrix1 + "\n" + matrix2);
             } else {
                 System.out.println("Test 1 correcto, las matrices son diferentes");
@@ -57,8 +57,8 @@ public class Apartado2 {
 
     public static void Test2() {
         try {
-            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -79,7 +79,7 @@ public class Apartado2 {
             matrix2.addElement(e5);
 
             if (!matrix1.equals(matrix2)) {
-                System.out.println("Test 2 fallido, las matrices deberían de ser" + 
+                System.out.println("Test 2 fallido, las matrices deberian de ser" + 
                                 " iguales\n" + matrix1 + "\n" + matrix2);
             } else {
                 System.out.println("Test 2 correcto, las matrices son iguales");
@@ -91,8 +91,8 @@ public class Apartado2 {
 
     public static void Test3() {
         try {
-            IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
+            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
+            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -111,7 +111,7 @@ public class Apartado2 {
             matrix2.addElement(e5);
 
             if (matrix1.equals(matrix2)) {
-                System.out.println("Test 3 fallido, las matrices deberían de ser" + 
+                System.out.println("Test 3 fallido, las matrices deberian de ser" + 
                                 " diferentes\n" + matrix1 + "\n" + matrix2);
             } else {
                 System.out.println("Test 3 correcto, las matrices son diferentes");

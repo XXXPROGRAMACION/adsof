@@ -11,6 +11,8 @@ public interface IMatrix<T> {
         throws IllegalPositionException;
     IMatrixElement<T> getElementAt(int i, int j) 
         throws IllegalPositionException;
+    boolean checkElementAt(int i, int j)
+        throws IllegalPositionException;
     List<IMatrixElement<T>> getNeighboursAt(int i, int j)
         throws IllegalPositionException;
     List<IMatrixElement<T>> asList();
