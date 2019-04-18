@@ -28,13 +28,13 @@ public class Apartado1 {
             }
 
             System.out.println(" -> Se añade '1' a la posición (1, 1)");
-            intMatrix.addElement(new IMatrixElementC<>(1, 1, 1));
+            intMatrix.addElement(new MatrixElement<>(1, 1, 1));
             System.out.println(" -> Se añade '2' a la posición (0, 1)");
-            intMatrix.addElement(new IMatrixElementC<>(0, 1, 2));
+            intMatrix.addElement(new MatrixElement<>(0, 1, 2));
             System.out.println(" -> Se añade '3' a la posición (1, 0)");
-            intMatrix.addElement(new IMatrixElementC<>(1, 0, 3));
+            intMatrix.addElement(new MatrixElement<>(1, 0, 3));
             System.out.println(" -> Se añade '4' a la posición (1, 2)");
-            intMatrix.addElement(new IMatrixElementC<>(1, 2, 4));
+            intMatrix.addElement(new MatrixElement<>(1, 2, 4));
             
             int v = intMatrix.getElementAt(1, 1).getElement();
             System.out.println(" -> El valor encontrado en (1, 1) es " + v);
@@ -75,13 +75,13 @@ public class Apartado1 {
             }
 
             System.out.println(" -> Se añade 'String 1' a la posición (1, 1)");
-            strMatrix.addElement(new IMatrixElementC<>(1, 1, "String 1"));
+            strMatrix.addElement(new MatrixElement<>(1, 1, "String 1"));
             System.out.println(" -> Se añade 'String 2' a la posición (0, 1)");
-            strMatrix.addElement(new IMatrixElementC<>(0, 1, "String 2"));
+            strMatrix.addElement(new MatrixElement<>(0, 1, "String 2"));
             System.out.println(" -> Se añade 'String 3' a la posición (1, 0)");
-            strMatrix.addElement(new IMatrixElementC<>(1, 0, "String 3"));
+            strMatrix.addElement(new MatrixElement<>(1, 0, "String 3"));
             System.out.println(" -> Se añade 'String 4' a la posición (1, 2)");
-            strMatrix.addElement(new IMatrixElementC<>(1, 2, "String 4"));
+            strMatrix.addElement(new MatrixElement<>(1, 2, "String 4"));
             
             String s = strMatrix.getElementAt(1, 1).getElement();
             System.out.println(" -> El valor encontrado en (1, 1) es " + s);

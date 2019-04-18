@@ -47,7 +47,6 @@ public class SparseMatrix<T> implements IMatrix<T> {
             rows.put(element.getI(), row);
         }
 
-        IMatrixElement<T> e = row.get(element.getJ());
         row.put(element.getJ(), element);
     }
 
@@ -136,7 +135,7 @@ public class SparseMatrix<T> implements IMatrix<T> {
     @Override
     public boolean equals(Object a) {
         if (!(a instanceof IMatrix)) return false;
-        return asList().equals(((IMatrix) a).asList());
+        return asList().equals(((IMatrix<?>) a).asList());
     }
 
     @Override

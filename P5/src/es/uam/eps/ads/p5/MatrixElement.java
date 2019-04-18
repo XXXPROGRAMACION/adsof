@@ -1,17 +1,17 @@
 package es.uam.eps.ads.p5;
 
-public class IMatrixElementC<T> implements IMatrixElement<T> {
+public class MatrixElement<T> implements IMatrixElement<T> {
     private int i;
     private int j;
     private T element;
 
-    public IMatrixElementC(int i, int j) {
+    public MatrixElement(int i, int j) {
         this.i = i;
         this.j = j;
         element = null;
     }
 
-    public IMatrixElementC(int i, int j, T element) {
+    public MatrixElement(int i, int j, T element) {
         this.i = i;
         this.j = j;
         this.element = element;
@@ -49,7 +49,7 @@ public class IMatrixElementC<T> implements IMatrixElement<T> {
     @Override
     public boolean equals(Object obj) {
        if (!(obj instanceof IMatrixElement)) return false;
-       IMatrixElementC<T> e = (IMatrixElementC<T>) obj;
+       MatrixElement<?> e = (MatrixElement<?>) obj;
        return (i == e.i) && (j == e.j) && (element.equals(e.element));
     }
 }

@@ -12,7 +12,7 @@ public class Apartado2 {
         Random r = new Random();
         try {
             for (int i = 0; i < 10; i++) {
-                matrix1.addElement(new IMatrixElementC(r.nextInt(9)+1, r.nextInt(9)+1, r.nextInt(100)));
+                matrix1.addElement(new MatrixElement<>(r.nextInt(9)+1, r.nextInt(9)+1, r.nextInt(100)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,11 +27,11 @@ public class Apartado2 {
             IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
             IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
 
-            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
-            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
-            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
-            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
-            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+            IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new MatrixElement<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new MatrixElement<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new MatrixElement<>(4, 5, 14);
 
             matrix1.addElement(e1);
             matrix1.addElement(e2);
@@ -60,11 +60,11 @@ public class Apartado2 {
             IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
             IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
 
-            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
-            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
-            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
-            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
-            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+            IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new MatrixElement<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new MatrixElement<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new MatrixElement<>(4, 5, 14);
 
             matrix1.addElement(e1);
             matrix1.addElement(e2);
@@ -94,11 +94,11 @@ public class Apartado2 {
             IMatrix<Integer> matrix1 = new SparseMatrix<>(10, 10);
             IMatrix<Integer> matrix2 = new SparseMatrix<>(10, 10);
 
-            IMatrixElement<Integer> e1 = new IMatrixElementC<>(1, 1, 5);
-            IMatrixElement<Integer> e2 = new IMatrixElementC<>(1, 2, 5);
-            IMatrixElement<Integer> e3 = new IMatrixElementC<>(1, 3, 7);
-            IMatrixElement<Integer> e4 = new IMatrixElementC<>(3, 4, 10);
-            IMatrixElement<Integer> e5 = new IMatrixElementC<>(4, 5, 14);
+            IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
+            IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
+            IMatrixElement<Integer> e3 = new MatrixElement<>(1, 3, 7);
+            IMatrixElement<Integer> e4 = new MatrixElement<>(3, 4, 10);
+            IMatrixElement<Integer> e5 = new MatrixElement<>(4, 5, 14);
 
             matrix1.addElement(e1);
             matrix1.addElement(e3);
