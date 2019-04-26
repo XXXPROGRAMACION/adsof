@@ -31,7 +31,7 @@ public interface IAgent extends IBasicAgent {
      * @return Agente sobre el que se llama a la función. Este return permite 
      * encadenar llamadas a métodos
      */
-    IAgent addAgent(Function<IAgent, Boolean> behaviour);
+    IAgent addBehaviour(Function<IAgent, Boolean> behaviour);
 
     /**
      * Realiza una copia del agente

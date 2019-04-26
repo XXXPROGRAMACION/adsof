@@ -1,8 +1,8 @@
 package es.uam.eps.ads.p5;
 
 public class BasicAgent implements IBasicAgent {
-    private String name;
-    private Cell cell;
+    protected String name;
+    protected Cell cell;
 
     public BasicAgent(String name) {
         this.name = name;
