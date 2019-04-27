@@ -1,20 +1,25 @@
 package es.uam.eps.ads.p5;
 
-public class BasicSimulator {
-    IMatrix<BasicCell> enviroment;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    public BasicSimulator(int columns, int rows) {
-        enviroment = new Matrix<>(columns, rows);
+
+public class Simulator {
+    IMatrix<Cell> enviroment;
+
+    public Simulator(int columns, int rows) {
+        this.enviroment = new Matrix<>(columns, rows);
     }
 
-    public void create(IBasicAgent agent, int number, int x, int y)
+    public void create(IAgent agent, int number, int x, int y)
     throws IllegalPositionException {
         if (!enviroment.checkElementAt(x, y)) {
-            IMatrixElement<BasicCell> matrixElement = new MatrixElement<>(x, y, new BasicCell());
+            IMatrixElement<Cell> matrixElement = new MatrixElement<>(x, y, new Cell());
             enviroment.addElement(matrixElement);
         }
 
-        BasicCell cell = enviroment.getElementAt(x, y).getElement();
+        Cell cell = enviroment.getElementAt(x, y).getElement();
         for (int i = 0; i < number; i++) {
             cell.addAgent(agent.copy());
         }
@@ -22,6 +27,14 @@ public class BasicSimulator {
 
     public void run(int steps) {
         for (int i = 0; i < steps; i++) {
+            List<IAgent> agents = new ArrayList<>();
+            for (IMatrixElement<Cell> m : enviroment.asList()) {
+                agents.addAll(m.getElement().getAgents());
+            }
+            Collections.shuffle(agents);
+            for (IAgent a : agents) {
+                a.exec();
+            }
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.println("Time = " + i);
             printEnviroment();
@@ -33,7 +46,7 @@ public class BasicSimulator {
         try {
             for (int y = 0; y < enviroment.getRows(); y++) {
                 for (int x = 0; x < enviroment.getCols(); x++) {
-                    IMatrixElement<BasicCell> element = enviroment.getElementAt(x, y);
+                    IMatrixElement<Cell> element = enviroment.getElementAt(x, y);
                     if (element == null) {
                         System.out.print("  0|");
                     } else {
@@ -47,4 +60,4 @@ public class BasicSimulator {
             e.printStackTrace();
         }        
     }
-}
+} 

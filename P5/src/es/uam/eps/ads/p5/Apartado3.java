@@ -4,7 +4,7 @@ public class Apartado3 {
 
     public static void main(String[] args) {
         try {
-            System.out.println("Simulador:");
+            System.out.println("Simulador básico:");
             BasicSimulator s = new BasicSimulator(10, 10);
 
             IBasicAgent random = new BasicAgent("random");

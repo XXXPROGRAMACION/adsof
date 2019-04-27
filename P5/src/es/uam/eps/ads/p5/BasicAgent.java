@@ -2,7 +2,7 @@ package es.uam.eps.ads.p5;
 
 public class BasicAgent implements IBasicAgent {
     protected String name;
-    protected Cell cell;
+    private BasicCell cell;
 
     public BasicAgent(String name) {
         this.name = name;
@@ -10,12 +10,12 @@ public class BasicAgent implements IBasicAgent {
     }
 
     @Override
-    public Cell getCell() {
+    public BasicCell getCell() {
         return cell;
     }
 
     @Override
-    public void setCell(Cell cell) {
+    public void setCell(BasicCell cell) {
         this.cell = cell;
     }
 

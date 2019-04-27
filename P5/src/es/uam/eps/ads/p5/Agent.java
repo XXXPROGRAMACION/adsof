@@ -6,8 +6,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Agent extends BasicAgent implements IAgent {
-
-    protected List<Behaviour> behaviours = new LinkedList<>();
+    private Cell cell;
+    private List<Behaviour> behaviours = new LinkedList<>();
 
     public Agent(String name) {
         super(name);
@@ -73,6 +73,14 @@ public class Agent extends BasicAgent implements IAgent {
             else 
                 break;
         }
+    }
+
+    /**
+     * Devuelve la célula del agente
+     * @return Célula del agente
+     */
+    public Cell cell() {
+        return cell;
     }
 
 }
