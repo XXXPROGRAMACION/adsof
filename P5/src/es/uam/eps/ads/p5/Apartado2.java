@@ -8,7 +8,7 @@ public class Apartado2 {
         Test2();
         Test3();
 
-        IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
+        IMatrix<IMatrixElement<Integer>> matrix1 = new Matrix<>(10, 10);
         Random r = new Random();
         try {
             for (int i = 0; i < 10; i++) {
@@ -24,8 +24,8 @@ public class Apartado2 {
 
     public static void Test1() {
         try {
-            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix1 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -57,8 +57,8 @@ public class Apartado2 {
 
     public static void Test2() {
         try {
-            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix1 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -91,8 +91,8 @@ public class Apartado2 {
 
     public static void Test3() {
         try {
-            IMatrix<Integer> matrix1 = new Matrix<>(10, 10);
-            IMatrix<Integer> matrix2 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix1 = new Matrix<>(10, 10);
+            IMatrix<IMatrixElement<Integer>> matrix2 = new Matrix<>(10, 10);
 
             IMatrixElement<Integer> e1 = new MatrixElement<>(1, 1, 5);
             IMatrixElement<Integer> e2 = new MatrixElement<>(1, 2, 5);
@@ -121,7 +121,7 @@ public class Apartado2 {
         }
     }
 
-    public static void Test4(IMatrix<Integer> matrix1) {
+    public static void Test4(IMatrix<IMatrixElement<Integer>> matrix1) {
         try {
             System.out.println("Lista de la matriz ordenada por fila: \n" + 
                         matrix1.asListSortedBy(new RowComparator()));
@@ -130,7 +130,7 @@ public class Apartado2 {
         }
     }
 
-    public static void Test5(IMatrix<Integer> matrix1) {
+    public static void Test5(IMatrix<IMatrixElement<Integer>> matrix1) {
         try {
             System.out.println("Lista de la matriz ordenada por columna: \n" + 
                         matrix1.asListSortedBy(new ColComparator()));

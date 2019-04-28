@@ -1,19 +1,37 @@
 package es.uam.eps.ads.p5;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Cell {
+public class Cell implements IMatrixElement<List<IAgent>> {
     private List<IAgent> agents;
+    private int i;
+    private int j;
 
-    public Cell() {
+    public Cell(int i, int j) {
+        this.i = i;
+        this.j = j;
+
         agents = new LinkedList<>();
     }
 
+    @Override
+    public List<IAgent> getElement() {
+        return agents();
+    }
+
+    public List<IAgent> agents() {
+        return Collections.unmodifiableList(agents);
+    }
+    
+    @Override
+    public void setElement(List<IAgent> list) {
+        throw new UnsupportedOperationException();
+    }
+
     public void addAgent(IAgent agent) {
-        agent.moveTo(this);
+        agent.setCell(this);
         agents.add(agent);
     }
 
@@ -21,11 +39,24 @@ public class Cell {
         agents.remove(agent);
     }
 
-    public int getAgentsNumber() {
+    public int size() {
         return agents.size();
     }
 
-    public List<IAgent> getAgents() {
-        return Collections.unmodifiableList(agents);
+    @Override
+    public int getI() {
+        return i;
+    }
+
+    @Override
+    public int getJ() {
+        return j;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+       if (!(obj instanceof Cell)) return false;
+       Cell c = (Cell) obj;
+       return (i == c.getI()) && (j == c.getJ());
     }
 }

@@ -48,7 +48,7 @@ public class MatrixElement<T> implements IMatrixElement<T> {
 
     @Override
     public boolean equals(Object obj) {
-       if (!(obj instanceof IMatrixElement)) return false;
+       if (!(obj instanceof MatrixElement)) return false;
        MatrixElement<?> e = (MatrixElement<?>) obj;
        return (i == e.i) && (j == e.j) && (element.equals(e.element));
     }

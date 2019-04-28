@@ -6,7 +6,7 @@ public class Apartado1 {
 
     public static void main(String[] args) {
         try {
-            IMatrix<Integer> intMatrix = new Matrix<>(6, 7);
+            IMatrix<IMatrixElement<Integer>> intMatrix = new Matrix<>(6, 7);
 
             System.out.println("Matriz de enteros:");
 
@@ -53,7 +53,7 @@ public class Apartado1 {
                 System.out.println(" ---> " + v);
             }
 
-            IMatrix<String> strMatrix = new Matrix<>(4, 8);
+            IMatrix<IMatrixElement<String>> strMatrix = new Matrix<>(4, 8);
 
             System.out.println("\nMatriz de strings:");
 

@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Matrix<T> implements IMatrix<T> {
+public class Matrix<T extends IMatrixElement<?>> implements IMatrix<T> {
     private final int columns;
     private final int rows;
-    private Map<Integer, Map<Integer, IMatrixElement<T>>> rowsMap;
+    private Map<Integer, Map<Integer, T>> rowsMap;
 
     public Matrix(int columns, int rows) {
         this.columns = columns;
@@ -23,7 +23,7 @@ public class Matrix<T> implements IMatrix<T> {
     }
 
     @Override
-    public int  getRows() {
+    public int getRows() {
         return rows;
     }
 
@@ -34,13 +34,12 @@ public class Matrix<T> implements IMatrix<T> {
     }
 
     @Override
-    public void addElement(IMatrixElement<T> element) 
-    throws IllegalPositionException {
+    public void addElement(T element) throws IllegalPositionException {
         if (!isLegalPosition(element.getI(), element.getJ())) {
             throw new IllegalPositionException();
         }
 
-        Map<Integer, IMatrixElement<T>> row = rowsMap.get(element.getI());
+        Map<Integer, T> row = rowsMap.get(element.getI());
 
         if (row == null) {
             row = new TreeMap<>();
@@ -51,13 +50,12 @@ public class Matrix<T> implements IMatrix<T> {
     }
 
     @Override
-    public IMatrixElement<T> getElementAt(int i, int j) 
-    throws IllegalPositionException {
+    public T getElementAt(int i, int j) throws IllegalPositionException {
         if (!isLegalPosition(i, j)) {
             throw new IllegalPositionException();
         }
 
-        Map<Integer, IMatrixElement<T>> row = rowsMap.get(i);
+        Map<Integer, T> row = rowsMap.get(i);
         if (row == null) return null;
 
         return row.get(j);
@@ -70,22 +68,22 @@ public class Matrix<T> implements IMatrix<T> {
             throw new IllegalPositionException();
         }
 
-        Map<Integer, IMatrixElement<T>> row = rowsMap.get(i);
+        Map<Integer, T> row = rowsMap.get(i);
         if (row == null) return false;
 
         return row.containsKey(j);
     }
 
     @Override
-    public List<IMatrixElement<T>> getNeighboursAt(int i, int j)
+    public List<T> getNeighboursAt(int i, int j)
     throws IllegalPositionException {
         if (!isLegalPosition(i, j)) {
             throw new IllegalPositionException();
         }
 
-        List<IMatrixElement<T>> list = new ArrayList<>();
-        Map<Integer, IMatrixElement<T>> row;
-        IMatrixElement<T> e;
+        List<T> list = new ArrayList<>();
+        Map<Integer, T> row;
+        T e;
 
         // Obtenemos el vecino superior
         if (isLegalPosition(i-1, j)) {
@@ -129,18 +127,18 @@ public class Matrix<T> implements IMatrix<T> {
         return list;
     }
 
-    public List<IMatrixElement<T>> asList() {
-        List<IMatrixElement<T>> list = new ArrayList<>();
+    public List<T> asList() {
+        List<T> list = new ArrayList<>();
 
-        for (Map<Integer, IMatrixElement<T>> row: rowsMap.values()) {
+        for (Map<Integer, T> row: rowsMap.values()) {
             list.addAll(row.values());
         }
         
         return list;
     }
-
-    public List<IMatrixElement<T>> asListSortedBy(Comparator<IMatrixElement<T>> c) {
-        List<IMatrixElement<T>> list = asList();
+    
+    public List<T> asListSortedBy(Comparator<T> c) {
+        List<T> list = asList();
         list.sort(c);
         return list;
     }

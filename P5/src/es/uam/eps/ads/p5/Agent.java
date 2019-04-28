@@ -5,21 +5,32 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Agent extends BasicAgent implements IAgent {
+public class Agent implements IAgent {
+    protected String name;
     private Cell cell;
     private List<Behaviour> behaviours = new LinkedList<>();
 
     public Agent(String name) {
-        super(name);
+        this.name = name;
+    }
+
+    @Override
+    public Cell getCell() {
+        return cell;
+    }
+
+    @Override
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     /**
      * Mueve el agente a una celda adyacente
-     * 
      * @param destination Destino de la operación
      */
     @Override
     public void moveTo(Cell destination) {
+        if (cell() != null) cell.removeAgent(this);
         cell = destination;
     }
 
@@ -68,10 +79,8 @@ public class Agent extends BasicAgent implements IAgent {
     @Override
     public void exec() {
         for (Behaviour b : behaviours) {
-            if (b.trigger.test(this) && b.behaviour.apply(this)) 
-                continue;
-            else 
-                break;
+            if (b.trigger.test(this) && b.behaviour.apply(this)) continue;
+            else break;
         }
     }
 
@@ -83,14 +92,13 @@ public class Agent extends BasicAgent implements IAgent {
         return cell;
     }
 
-}
-
-class Behaviour {
-    public Predicate<IAgent> trigger;
-    public Function<IAgent, Boolean> behaviour;
-
-    public Behaviour(Predicate<IAgent> trigger, Function<IAgent, Boolean> behaviour) {
-        this.trigger = trigger;
-        this.behaviour = behaviour;
+    private static class Behaviour {
+        public Predicate<IAgent> trigger;
+        public Function<IAgent, Boolean> behaviour;
+    
+        public Behaviour(Predicate<IAgent> trigger, Function<IAgent, Boolean> behaviour) {
+            this.trigger = trigger;
+            this.behaviour = behaviour;
+        }
     }
 }
