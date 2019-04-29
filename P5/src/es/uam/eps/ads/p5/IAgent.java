@@ -3,11 +3,7 @@ package es.uam.eps.ads.p5;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public interface IAgent {
-
-    Cell getCell();
-
-    void setCell(Cell cell);
+public interface IAgent extends IBasicAgent {
 
     /**
      * Mueve el agente a una celda adyacente
@@ -36,16 +32,4 @@ public interface IAgent {
      * encadenar llamadas a métodos
      */
     IAgent addBehaviour(Function<IAgent, Boolean> behaviour);
-
-    /**
-     * Devuelve la célula del agente
-     * @return Célula del agente
-     */
-    Cell cell();
-
-    /**
-     * Realiza una copia del agente
-     * @return Copia del agente
-     */
-    IAgent copy();
 }

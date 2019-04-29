@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Cell implements IMatrixElement<List<IAgent>> {
-    private List<IAgent> agents;
+public class Cell implements IMatrixElement<List<IBasicAgent>> {
+    private List<IBasicAgent> agents;
     private int i;
     private int j;
 
@@ -17,25 +17,25 @@ public class Cell implements IMatrixElement<List<IAgent>> {
     }
 
     @Override
-    public List<IAgent> getElement() {
+    public List<IBasicAgent> getElement() {
         return agents();
     }
 
-    public List<IAgent> agents() {
+    public List<IBasicAgent> agents() {
         return Collections.unmodifiableList(agents);
     }
     
     @Override
-    public void setElement(List<IAgent> list) {
+    public void setElement(List<IBasicAgent> list) {
         throw new UnsupportedOperationException();
     }
 
-    public void addAgent(IAgent agent) {
+    public void addAgent(IBasicAgent agent) {
         agent.setCell(this);
         agents.add(agent);
     }
 
-    public void removeAgent(IAgent agent) {
+    public void removeAgent(IBasicAgent agent) {
         agents.remove(agent);
     }
 

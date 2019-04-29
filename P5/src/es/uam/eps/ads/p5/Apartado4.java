@@ -17,7 +17,7 @@ public class Apartado4 {
             System.out.println(" -> Se anaden los comportamientos");
             random.addBehaviour(agent -> {
                 try {                   
-                    List<Cell> neighbours = s.getNeighboursAt(agent.cell());
+                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
                     Cell destination = neighbours.get(new Random().nextInt(neighbours.size()));
                     agent.moveTo(destination);
                     return true;
@@ -27,14 +27,14 @@ public class Apartado4 {
                 }
             });
 
-            outer.addBehaviour(agent -> agent.cell().size() > 5, agent -> {
+            outer.addBehaviour(agent -> agent.getCell().size() > 5, agent -> {
                 try {
-                    List<Cell> neighbours = s.getNeighboursAt(agent.cell());
+                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
                     Integer minAgents = neighbours.stream().
                                     mapToInt(c -> c.size()).
                                     min().getAsInt();
                     List<Cell> destinations = neighbours.stream().
-                                    filter(c -> c.agents().size() == minAgents).
+                                    filter(c -> c.size() == minAgents).
                                     collect(Collectors.toList());
                     Cell destination = destinations.get(new Random().nextInt(destinations.size()));
                     agent.moveTo(destination);
@@ -45,12 +45,12 @@ public class Apartado4 {
                 }
             });
 
-            System.out.println(" -> Se anaden 10 agentes en (5, 5)");
-            s.create(random, 10, 5, 5);
-            System.out.println(" -> Se anaden 10 agentes en (7, 7)");
-            s.create(outer, 10, 7, 7);
+            System.out.println(" -> Se anaden 100 agentes random en (5, 5)");
+            s.create(random, 100, 5, 5);
+            System.out.println(" -> Se anaden 100 agentes outer en (7, 7)");
+            s.create(outer, 100, 7, 7);
 
-            s.run(2);
+            s.run(60);
         } catch (IllegalPositionException e) {
             e.printStackTrace();
         }

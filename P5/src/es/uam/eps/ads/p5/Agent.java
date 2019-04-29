@@ -5,23 +5,17 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Agent implements IAgent {
-    protected String name;
-    private Cell cell;
+public class Agent extends BasicAgent implements IAgent {
     private List<Behaviour> behaviours = new LinkedList<>();
 
     public Agent(String name) {
-        this.name = name;
+        super(name);
     }
 
-    @Override
-    public Cell getCell() {
-        return cell;
-    }
-
-    @Override
-    public void setCell(Cell cell) {
+    public Agent(String name, Cell cell, List<Behaviour> behaviours) {
+        super(name);
         this.cell = cell;
+        this.behaviours = behaviours;
     }
 
     /**
@@ -30,8 +24,9 @@ public class Agent implements IAgent {
      */
     @Override
     public void moveTo(Cell destination) {
-        if (cell() != null) cell.removeAgent(this);
+        if (cell != null) cell.removeAgent(this);
         cell = destination;
+        destination.addAgent(this);
     }
 
     /**
@@ -64,13 +59,8 @@ public class Agent implements IAgent {
      * @return Copia del agente
      */
     @Override
-    public IAgent copy() {
-        Agent agent = new Agent(name);
-        if (cell != null) {
-            agent.moveTo(cell);
-        }
-        agent.behaviours = behaviours;
-        return agent; 
+    public IBasicAgent copy() {
+        return new Agent(name, cell, behaviours); 
     }
 
     /**
@@ -81,24 +71,6 @@ public class Agent implements IAgent {
         for (Behaviour b : behaviours) {
             if (b.trigger.test(this) && b.behaviour.apply(this)) continue;
             else break;
-        }
-    }
-
-    /**
-     * Devuelve la célula del agente
-     * @return Célula del agente
-     */
-    public Cell cell() {
-        return cell;
-    }
-
-    private static class Behaviour {
-        public Predicate<IAgent> trigger;
-        public Function<IAgent, Boolean> behaviour;
-    
-        public Behaviour(Predicate<IAgent> trigger, Function<IAgent, Boolean> behaviour) {
-            this.trigger = trigger;
-            this.behaviour = behaviour;
         }
     }
 }

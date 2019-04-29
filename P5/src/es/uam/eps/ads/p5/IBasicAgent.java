@@ -2,9 +2,9 @@ package es.uam.eps.ads.p5;
 
 public interface IBasicAgent {
 
-    BasicCell getCell();
+    Cell getCell();
 
-    void setCell(BasicCell cell);
+    void setCell(Cell cell);
     
     IBasicAgent copy();
 }
