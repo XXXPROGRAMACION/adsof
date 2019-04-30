@@ -11,8 +11,9 @@ public class AgentState implements IAgentState {
     private List<StateChanger> stateChangers = new LinkedList<>();
     private IAgentWithState owner;
 
-    public AgentState(String name) {
+    public AgentState(String name, IAgentWithState owner) {
         this.name = name;
+        this.owner = owner;
     }
     
     public AgentState(String name, List<Behaviour> behaviours, List<StateChanger> stateChangers, IAgentWithState owner) {
@@ -66,16 +67,6 @@ public class AgentState implements IAgentState {
         }
     }
 
-    private static class StateChanger {
-        public Predicate<IAgent> trigger;
-        public IAgentState state;
-
-        public StateChanger(Predicate<IAgent> trigger, IAgentState state) {
-            this.trigger = trigger;
-            this.state = state;
-        }
-    }
-
     @Override
     public void setOwner(IAgentWithState aws) {
         owner = aws;
@@ -84,5 +75,15 @@ public class AgentState implements IAgentState {
     @Override
     public IAgentState copy() {
         return new AgentState(name, behaviours, stateChangers, owner);
+    }
+
+    private static class StateChanger {
+        public Predicate<IAgent> trigger;
+        public IAgentState state;
+
+        public StateChanger(Predicate<IAgent> trigger, IAgentState state) {
+            this.trigger = trigger;
+            this.state = state;
+        }
     }
 }

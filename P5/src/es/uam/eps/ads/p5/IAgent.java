@@ -32,4 +32,10 @@ public interface IAgent extends IBasicAgent {
      * encadenar llamadas a métodos
      */
     IAgent addBehaviour(Function<IAgent, Boolean> behaviour);
+
+    void set(String propertyName, int propertyValue);
+
+    Integer get(String propertyName);
+
+    void increase(String propertyName, int increasement);
 }

@@ -16,10 +16,15 @@ public class Apartado5 {
             outer.state("active").toState("idle", agent -> agent.getCell().size() <= 5);
             
             outer.state("active").addBehaviour(agent -> {
-                List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
-                Cell destination = neighbours.get(new Random().nextInt(neighbours.size()));
-                agent.moveTo(destination);
-                return true;
+                try {
+                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
+                    Cell destination = neighbours.get(new Random().nextInt(neighbours.size()));
+                    agent.moveTo(destination);
+                    return true;
+                } catch (IllegalPositionException e) {
+                    e.printStackTrace();;
+                    return false;
+                }
             });
 
             System.out.println(" -> Se anaden 100 agentes outer en (5, 5)");

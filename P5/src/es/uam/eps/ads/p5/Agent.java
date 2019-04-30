@@ -1,21 +1,29 @@
 package es.uam.eps.ads.p5;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Agent extends BasicAgent implements IAgent {
-    private List<Behaviour> behaviours = new LinkedList<>();
+    protected List<Behaviour> behaviours;
+    protected Map<String, Integer> properties;
 
     public Agent(String name) {
         super(name);
+
+        behaviours = new LinkedList<>();
+        properties = new HashMap<>();
     }
 
-    public Agent(String name, Cell cell, List<Behaviour> behaviours) {
+    public Agent(String name, Cell cell, List<Behaviour> behaviours, Map<String, Integer> properties) {
         super(name);
+
         this.cell = cell;
         this.behaviours = behaviours;
+        this.properties = properties;
     }
 
     /**
@@ -54,15 +62,25 @@ public class Agent extends BasicAgent implements IAgent {
         return this;
     }
 
-    /**
-     * Realiza una copia del agente
-     * @return Copia del agente
-     */
     @Override
-    public IBasicAgent copy() {
-        return new Agent(name, cell, behaviours); 
+    public void set(String propertyName, int propertyValue) {
+        properties.put(propertyName, propertyValue);
     }
 
+    @Override
+    public Integer get(String propertyName) {
+        return properties.get(propertyName);
+    }
+
+    @Override
+    public void increase(String propertyName, int increasement) {
+        Integer propertyValue = properties.get(propertyName);
+        if (propertyValue == null) return;
+
+        propertyValue += increasement;
+        properties.put(propertyName, propertyValue);
+    }
+    
     /**
      * Ejectua el comportamiento del agente
      */
@@ -72,5 +90,15 @@ public class Agent extends BasicAgent implements IAgent {
             if (b.trigger.test(this) && b.behaviour.apply(this)) continue;
             else break;
         }
+    }
+
+    /**
+     * Realiza una copia del agente
+     * @return Copia del agente
+     */
+    @Override
+    public IBasicAgent copy() {
+        Map<String, Integer> newProperties = new HashMap<>(properties);
+        return new Agent(name, cell, behaviours, newProperties); 
     }
 }

@@ -10,4 +10,6 @@ public interface IAgentWithState extends IAgent{
     IAgentWithState addBehaviour(String state, Predicate<IAgent> trigger, Function<IAgent, Boolean> behaviour);
     
     IAgentWithState addBehaviour(String state, Function<IAgent, Boolean> behaviour);
+
+    void setCurrentState(IAgentState state);
 }
