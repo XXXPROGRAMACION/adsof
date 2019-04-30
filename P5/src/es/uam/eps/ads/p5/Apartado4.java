@@ -8,6 +8,8 @@ public class Apartado4 {
 
     public static void main(String[] args) {
         try {
+            Random r = new Random();
+
             System.out.println("Simulador:");
             Simulator s = new Simulator(10, 10);
 
@@ -17,8 +19,8 @@ public class Apartado4 {
             System.out.println(" -> Se anaden los comportamientos");
             random.addBehaviour(agent -> {
                 try {                   
-                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
-                    Cell destination = neighbours.get(new Random().nextInt(neighbours.size()));
+                    List<Cell> neighbours = s.getNeighboursAt(agent.cell());
+                    Cell destination = neighbours.get(r.nextInt(neighbours.size()));
                     agent.moveTo(destination);
                     return true;
                 } catch (IllegalPositionException e) {
@@ -27,16 +29,16 @@ public class Apartado4 {
                 }
             });
 
-            outer.addBehaviour(agent -> agent.getCell().size() > 5, agent -> {
+            outer.addBehaviour(agent -> agent.cell().size() > 5, agent -> {
                 try {
-                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
+                    List<Cell> neighbours = s.getNeighboursAt(agent.cell());
                     Integer minAgents = neighbours.stream().
                                     mapToInt(c -> c.size()).
                                     min().getAsInt();
                     List<Cell> destinations = neighbours.stream().
                                     filter(c -> c.size() == minAgents).
                                     collect(Collectors.toList());
-                    Cell destination = destinations.get(new Random().nextInt(destinations.size()));
+                    Cell destination = destinations.get(r.nextInt(destinations.size()));
                     agent.moveTo(destination);
                     return true;
                 } catch (IllegalPositionException e) {

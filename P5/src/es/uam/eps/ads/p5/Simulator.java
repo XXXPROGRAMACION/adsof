@@ -13,6 +13,9 @@ public class Simulator extends BasicSimulator {
     @Override
     public void run(int steps) {
         for (int i = 0; i < steps; i++) {
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.out.println("Time = " + i);
+
             List<IBasicAgent> agents = new LinkedList<>();
             for (Cell c : enviroment.asList()) {
                 agents.addAll(c.agents());
@@ -23,9 +26,7 @@ public class Simulator extends BasicSimulator {
             for (IBasicAgent a : agents) {
                 ((IAgent) a).exec();
             }
-
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            System.out.println("Time = " + i);
+            
             printEnviroment();
         }
 

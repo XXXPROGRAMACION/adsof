@@ -24,8 +24,8 @@ public class AgentWithState extends Agent implements IAgentWithState {
         }
     }
 
-    public AgentWithState(String name, Cell cell, List<Behaviour> behaviours, Map<String, Integer> properties, Map<String, IAgentState> states) {
-        super(name, cell, behaviours, properties);
+    public AgentWithState(String name, Cell cell, List<Behaviour> behaviours, List<Interaction> interactions, Map<String, Integer> properties, Map<String, IAgentState> states) {
+        super(name, cell, behaviours, interactions, properties);
 
         this.states = states;
     }
@@ -75,7 +75,7 @@ public class AgentWithState extends Agent implements IAgentWithState {
     public IBasicAgent copy() {
         Map<String, Integer> newProperties = new HashMap<>(properties);
 
-        IAgentWithState agent = new AgentWithState(name, cell, behaviours, newProperties, states);
+        IAgentWithState agent = new AgentWithState(name, cell, behaviours, interactions, newProperties, states);
         
         IAgentState state = currentState.copy();
         state.setOwner(agent);

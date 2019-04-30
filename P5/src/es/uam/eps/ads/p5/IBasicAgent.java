@@ -2,7 +2,9 @@ package es.uam.eps.ads.p5;
 
 public interface IBasicAgent {
 
-    Cell getCell();
+    String name();
+
+    Cell cell();
 
     void setCell(Cell cell);
     

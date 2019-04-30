@@ -20,7 +20,7 @@ public class Cell implements IMatrixElement<List<IBasicAgent>> {
     public List<IBasicAgent> getElement() {
         return agents();
     }
-
+    
     public List<IBasicAgent> agents() {
         return Collections.unmodifiableList(agents);
     }

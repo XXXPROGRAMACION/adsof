@@ -10,7 +10,12 @@ public class BasicAgent implements IBasicAgent {
     }
 
     @Override
-    public Cell getCell() {
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public Cell cell() {
         return cell;
     }
 

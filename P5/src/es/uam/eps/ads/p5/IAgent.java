@@ -33,6 +33,10 @@ public interface IAgent extends IBasicAgent {
      */
     IAgent addBehaviour(Function<IAgent, Boolean> behaviour);
 
+    IAgent addInteraction(Predicate2D<IAgent, IAgent> trigger, Function2D<IAgent, IAgent, Boolean> behaviour);
+
+    IAgent addInteraction(Function2D<IAgent, IAgent, Boolean> behaviour);
+
     void set(String propertyName, int propertyValue);
 
     Integer get(String propertyName);

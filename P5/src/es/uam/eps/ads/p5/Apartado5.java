@@ -7,18 +7,20 @@ public class Apartado5 {
 
     public static void main(String[] args) {
         try {
+            Random r = new Random();
+
             System.out.println("Simulador:");
             Simulator s = new Simulator(10, 10);
 
             IAgentWithState outer = new AgentWithState("outer", "idle", "active"); // dos estados: idle y active
             
-            outer.state("idle").toState("active", agent -> agent.getCell().size() > 5);
-            outer.state("active").toState("idle", agent -> agent.getCell().size() <= 5);
+            outer.state("idle").toState("active", agent -> agent.cell().size() > 5);
+            outer.state("active").toState("idle", agent -> agent.cell().size() <= 5);
             
             outer.state("active").addBehaviour(agent -> {
                 try {
-                    List<Cell> neighbours = s.getNeighboursAt(agent.getCell());
-                    Cell destination = neighbours.get(new Random().nextInt(neighbours.size()));
+                    List<Cell> neighbours = s.getNeighboursAt(agent.cell());
+                    Cell destination = neighbours.get(r.nextInt(neighbours.size()));
                     agent.moveTo(destination);
                     return true;
                 } catch (IllegalPositionException e) {

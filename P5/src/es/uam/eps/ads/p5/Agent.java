@@ -9,20 +9,23 @@ import java.util.function.Predicate;
 
 public class Agent extends BasicAgent implements IAgent {
     protected List<Behaviour> behaviours;
+    protected List<Interaction> interactions;
     protected Map<String, Integer> properties;
 
     public Agent(String name) {
         super(name);
 
         behaviours = new LinkedList<>();
+        interactions = new LinkedList<>();
         properties = new HashMap<>();
     }
 
-    public Agent(String name, Cell cell, List<Behaviour> behaviours, Map<String, Integer> properties) {
+    public Agent(String name, Cell cell, List<Behaviour> behaviours, List<Interaction> interactions, Map<String, Integer> properties) {
         super(name);
 
         this.cell = cell;
         this.behaviours = behaviours;
+        this.interactions = interactions;
         this.properties = properties;
     }
 
@@ -63,6 +66,18 @@ public class Agent extends BasicAgent implements IAgent {
     }
 
     @Override
+    public IAgent addInteraction(Predicate2D<IAgent, IAgent> trigger, Function2D<IAgent, IAgent, Boolean> behaviour) {
+        interactions.add(new Interaction(trigger, behaviour));
+        return this;
+    }
+
+    @Override
+    public IAgent addInteraction(Function2D<IAgent, IAgent, Boolean> behaviour) {
+        interactions.add(new Interaction((self, agent) -> true, behaviour));
+        return this;
+    }
+
+    @Override
     public void set(String propertyName, int propertyValue) {
         properties.put(propertyName, propertyValue);
     }
@@ -90,6 +105,16 @@ public class Agent extends BasicAgent implements IAgent {
             if (b.trigger.test(this) && b.behaviour.apply(this)) continue;
             else break;
         }
+
+        if (interactions.isEmpty()) return;
+
+        for (IBasicAgent basicA : cell.agents()) {
+            IAgent a = (IAgent) basicA;
+            for (Interaction i : interactions) {
+                if (i.trigger.test(this, a) && i.behaviour.apply(this, a)) continue;
+                else break;
+            }
+        }
     }
 
     /**
@@ -99,6 +124,6 @@ public class Agent extends BasicAgent implements IAgent {
     @Override
     public IBasicAgent copy() {
         Map<String, Integer> newProperties = new HashMap<>(properties);
-        return new Agent(name, cell, behaviours, newProperties); 
+        return new Agent(name, cell, behaviours, interactions, newProperties); 
     }
 }
